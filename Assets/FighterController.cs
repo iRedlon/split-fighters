@@ -14,8 +14,6 @@ public class FighterController : MonoBehaviour
     public float gravity = 9.8f;
     public float jumpVel = 3f;
 
-
-
     public LayerMask layerMask;
     public GameObject hitBox;
 
@@ -81,9 +79,8 @@ public class FighterController : MonoBehaviour
         gravityVec = new Vector3(0, jumpVel, 0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+
+    void firstMovementControls() {
         ReadInputs();
         movement = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
 
@@ -104,5 +101,11 @@ public class FighterController : MonoBehaviour
         } else {
             transform.localScale = new Vector3(-1, 1, 1);
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        firstMovementControls();
     }
 }

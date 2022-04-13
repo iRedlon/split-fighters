@@ -174,9 +174,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8214a47d55d9e6d4d99900469e95d7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  opponent: {fileID: 1922993970}
+  speed: 5
   gravity: 9.8
-  jumpVel: 3
+  jumpVel: 2
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -527,6 +528,7 @@ GameObject:
   - component: {fileID: 1922993973}
   - component: {fileID: 1922993972}
   - component: {fileID: 1922993971}
+  - component: {fileID: 1922993977}
   - component: {fileID: 1922993975}
   - component: {fileID: 1922993976}
   m_Layer: 0
@@ -624,6 +626,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b867965e6a4f2f34ba782de1960c9849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opponent: {fileID: 123570227}
+  gravity: 9.8
 --- !u!114 &1922993976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,6 +640,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af4f553b8feb78a4fa482f16c621cbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &1922993977
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922993970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2050921687
 GameObject:
   m_ObjectHideFlags: 0
