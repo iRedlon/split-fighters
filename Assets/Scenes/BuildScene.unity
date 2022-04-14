@@ -439,6 +439,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4934027975847506747, guid: 99a52fdb50132bf44bc322555bc26ee1, type: 3}
+      propertyPath: hitBox
+      value: 
+      objectReference: {fileID: 1593029693}
+    - target: {fileID: 4934027975847506747, guid: 99a52fdb50132bf44bc322555bc26ee1, type: 3}
       propertyPath: opponent
       value: 
       objectReference: {fileID: 533672751}
@@ -461,6 +465,11 @@ Transform:
 --- !u!4 &1565598637 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4742273308096380500, guid: 1e3cfcb60f6561942aa33a0639ddd3d8, type: 3}
+  m_PrefabInstance: {fileID: 368155768}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1593029693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4742273307351139603, guid: 1e3cfcb60f6561942aa33a0639ddd3d8, type: 3}
   m_PrefabInstance: {fileID: 368155768}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1657918415 stripped

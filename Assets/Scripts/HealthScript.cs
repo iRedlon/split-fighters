@@ -1,23 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthScript : MonoBehaviour
 {
+    public int maxHealth = 1000;
+    public int health;
 
-    public void TakeDamage(int dmg) {
-        Debug.Log("Damage Taken: " + dmg);
-    }
+    public Slider healthSlider;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        health = maxHealth;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
+    
+    public void TakeDamage(int dmg) {
+        Debug.Log("Damage Taken: " + dmg);
         
+        health -= dmg;
+        healthSlider.value = (float)health / (float)maxHealth;
     }
 }

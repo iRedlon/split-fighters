@@ -51,12 +51,12 @@ public class FighterController : MonoBehaviour
 
         for (int i = 0; i < hitColliders.Length; i++) {
             Debug.Log("Player Hit: " + hitColliders[i].name + " #" + i);
-
+  
             if (hitColliders[i].GetComponent<HealthScript>() != null) {
                 hitColliders[i].GetComponent<HealthScript>().TakeDamage(1);
             }
 
-            if (hitColliders[i].name == "Damage Dummy") {   
+            if (hitColliders[i].name == "Dummy") {   
                 float direction = transform.position.x <= opponent.transform.position.x ? 1f : -1f;
                 hitColliders[i].GetComponent<Dummy>().TakeHit(direction * 20);
             }

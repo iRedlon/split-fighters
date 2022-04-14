@@ -71,7 +71,7 @@ public class Dummy : MonoBehaviour
 
         for (int i = 0; i < hitColliders.Length; i++) {
             Debug.Log("Dummy Found: " + hitColliders[i].name + " #" + i);
-            if (hitColliders[i].GetComponent<HealthScript>() != null && hitColliders[i].name != "Damage Dummy") {
+            if (hitColliders[i].GetComponent<HealthScript>() != null && hitColliders[i].name != "Dummy") {
                 hitColliders[i].GetComponent<HealthScript>().TakeDamage(1);
                 Debug.Log("Dummy Hit: " + hitColliders[i].name + " #" + i);
             }
