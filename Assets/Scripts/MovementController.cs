@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FighterController : MonoBehaviour
+public class MovementController : MonoBehaviour
 {
 
 
@@ -13,9 +13,6 @@ public class FighterController : MonoBehaviour
     public float speed = 1.0f;
     public float gravity = 9.8f;
     public float jumpVel = 3f;
-
-    public LayerMask layerMask;
-    public GameObject hitBox;
 
 
     private Vector3 gravityVec = new Vector3();
@@ -41,37 +38,21 @@ public class FighterController : MonoBehaviour
             Jump();
         }
 
-        if (Input.GetAxis("Fire1") > 0.5) {
-            Attack();
-        }
     }
 
-    void Attack() {
-        Collider[] hitColliders = Physics.OverlapBox(hitBox.transform.position, hitBox.transform.localScale / 2, Quaternion.identity, layerMask);
-
-        for (int i = 0; i < hitColliders.Length; i++) {
-            Debug.Log("Hit : " + hitColliders[i].name + i);
-
-            if (hitColliders[i].GetComponent<HealthScript>() != null) {
-                hitColliders[i].GetComponent<HealthScript>().TakeDamage(1);
-            }
-
-        }
+    public void MoveJoystick(float strength) {
+        movement = new Vector3(strength, 0, 0);
     }
 
-    void Block() {
-        
+    public void MoveLeft() {
+        movement = new Vector3(-1f, 0, 0);
     }
 
-    void MoveLeft() {
-        movement += new Vector3(1f, 0, 0);
+    public void MoveRight() {
+        movement = new Vector3(1f, 0, 0);
     }
 
-    void MoveRight() {
-        movement -= new Vector3(1f, 0, 0);
-    }
-
-    void Jump() {
+    public void Jump() {
         if (jumped) {
             return;
         }
@@ -81,8 +62,8 @@ public class FighterController : MonoBehaviour
 
 
     void firstMovementControls() {
-        ReadInputs();
-        movement = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+        // ReadInputs();
+        //movement = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
 
         if (!_controller.isGrounded) {
             gravityVec += new Vector3(0, -gravity, 0) * Time.deltaTime;
@@ -91,8 +72,8 @@ public class FighterController : MonoBehaviour
             gravityVec = new Vector3(0, 0, 0);
         }
 
-        _controller.Move((movement + gravityVec) * Time.deltaTime * speed);
-
+        _controller.Move((movement * speed + gravityVec) * Time.deltaTime);
+        movement = new Vector3();
 
 
         // Makes sure the player is facing the opponent at all times
@@ -101,6 +82,8 @@ public class FighterController : MonoBehaviour
         } else {
             transform.localScale = new Vector3(-1, 1, 1);
         }
+
+
     }
 
     // Update is called once per frame
