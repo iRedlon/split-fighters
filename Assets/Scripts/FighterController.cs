@@ -50,10 +50,15 @@ public class FighterController : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapBox(hitBox.transform.position, hitBox.transform.localScale / 2, Quaternion.identity, layerMask);
 
         for (int i = 0; i < hitColliders.Length; i++) {
-            Debug.Log("Hit : " + hitColliders[i].name + i);
+            Debug.Log("Player Hit: " + hitColliders[i].name + " #" + i);
 
             if (hitColliders[i].GetComponent<HealthScript>() != null) {
                 hitColliders[i].GetComponent<HealthScript>().TakeDamage(1);
+            }
+
+            if (hitColliders[i].name == "Damage Dummy") {   
+                float direction = transform.position.x <= opponent.transform.position.x ? 1f : -1f;
+                hitColliders[i].GetComponent<Dummy>().TakeHit(direction * 20);
             }
 
         }
