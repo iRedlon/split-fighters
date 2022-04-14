@@ -6,7 +6,7 @@ public class HealthScript : MonoBehaviour
 {
 
     public void TakeDamage(int dmg) {
-        Debug.Log("dmg taken: " + dmg);
+        Debug.Log("Damage Taken: " + dmg);
     }
 
     // Start is called before the first frame update
