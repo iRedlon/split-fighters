@@ -34,9 +34,9 @@ public class FighterController : MonoBehaviour
             } else {
                 _movementController.MoveJoystick(analogX);
             }
-            
+
         }
-        
+
         if (Input.GetButtonDown(down+"Bumper")) {
             _attackController.StartLowAttack();
         }
@@ -112,4 +112,5 @@ public class FighterController : MonoBehaviour
         Debug.Log("Right Analog X: " + Input.GetAxis("RightAnalogX"));
         Debug.Log("Right Analog Y: " + Input.GetAxis("RightAnalogY"));
     }
+
 }
