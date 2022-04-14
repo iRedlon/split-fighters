@@ -37,11 +37,11 @@ public class FighterController : MonoBehaviour
             
         }
         
-        if (Input.GetAxis(down+"Bumper") >= 0.5) {
+        if (Input.GetButtonDown(down+"Bumper")) {
             _attackController.StartLowAttack();
         }
 
-        if (Input.GetAxis(up+"Bumper") >= 0.5) {
+        if (Input.GetButtonDown(up+"Bumper")) {
             _attackController.StartHighAttack();
         }
     }
@@ -69,11 +69,11 @@ public class FighterController : MonoBehaviour
 
         }
 
-        if (Input.GetAxis(right + "Bumper") >= 0.5) {
+        if (Input.GetButtonDown(right + "Bumper")) {
             _attackController.StartLowAttack();
         }
 
-        if (Input.GetAxis(left + "Bumper") >= 0.5) {
+        if (Input.GetButtonDown(left + "Bumper")) {
             _attackController.StartHighAttack();
         }
     }
