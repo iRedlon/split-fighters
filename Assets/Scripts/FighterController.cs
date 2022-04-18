@@ -8,6 +8,9 @@ public enum ControlSystem { UpDown, LeftRight, DownUp, RightLeft }
 public class FighterController : MonoBehaviour
 {
 
+    public GameObject _animModel;
+    private Animator _animator;
+
 
     public ControlSystem controlSystem = ControlSystem.UpDown;
 
@@ -27,11 +30,20 @@ public class FighterController : MonoBehaviour
             if (binaryMovement) {
                 if (analogX >= 0.5) {
                     _movementController.MoveRight();
+                    _animator.SetTrigger("WalkForwardAnim");
                 }
                 if (analogX <= -0.5) {
                     _movementController.MoveLeft();
+                    _animator.SetTrigger("WalkBackwardAnim");
                 }
             } else {
+                if (analogX >= 0.01) {
+                    _animator.SetTrigger("WalkForwardAnim");
+                }
+                if (analogX <= -0.01) {
+                    _animator.SetTrigger("WalkBackwardAnim");
+                }
+
                 _movementController.MoveJoystick(analogX);
             }
 
@@ -43,6 +55,7 @@ public class FighterController : MonoBehaviour
 
         if (Input.GetButtonDown(up+"Bumper")) {
             _attackController.StartHighAttack();
+            _animator.SetTrigger("AttackAnim");
         }
     }
 
@@ -58,12 +71,20 @@ public class FighterController : MonoBehaviour
             if(binaryMovement) {
                 if (movementInput >= 0.5) {
                     _movementController.MoveRight();
+                    _animator.SetTrigger("WalkForwardAnim");
                 }
                 if (movementInput <= -0.5) {
                     _movementController.MoveLeft();
+
+                    _animator.SetTrigger("WalkBackwardAnim");
                 }
             } else {
-
+                if (movementInput >= 0.01) {
+                    _animator.SetTrigger("WalkForwardAnim");
+                }
+                if (movementInput <= -0.01) {
+                    _animator.SetTrigger("WalkBackwardAnim");
+                }
                 _movementController.MoveJoystick(movementInput);
             }
 
@@ -75,6 +96,7 @@ public class FighterController : MonoBehaviour
 
         if (Input.GetButtonDown(left + "Bumper")) {
             _attackController.StartHighAttack();
+            _animator.SetTrigger("AttackAnim");
         }
     }
 
@@ -82,6 +104,7 @@ public class FighterController : MonoBehaviour
     void Start() {
         _movementController = GetComponent<MovementController>();
         _attackController = GetComponent<AttackController>();
+        _animator = _animModel.GetComponent<Animator>();
     }
 
     // Update is called once per frame
