@@ -23,6 +23,8 @@ public class FighterController : MonoBehaviour
 
     void UpDownSplitInputs(string up, string down) {
 
+        bool inputRead = false;
+
         float analogX = Input.GetAxis(down+"AnalogX");
 
         if (!_attackController.attackInProgress) {
@@ -31,17 +33,21 @@ public class FighterController : MonoBehaviour
                 if (analogX >= 0.5) {
                     _movementController.MoveRight();
                     _animator.SetTrigger("WalkForwardAnim");
+                    inputRead = true;
                 }
                 if (analogX <= -0.5) {
                     _movementController.MoveLeft();
                     _animator.SetTrigger("WalkBackwardAnim");
+                    inputRead = true;
                 }
             } else {
                 if (analogX >= 0.01) {
                     _animator.SetTrigger("WalkForwardAnim");
+                    inputRead = true;
                 }
                 if (analogX <= -0.01) {
                     _animator.SetTrigger("WalkBackwardAnim");
+                    inputRead = true;
                 }
 
                 _movementController.MoveJoystick(analogX);
@@ -51,15 +57,22 @@ public class FighterController : MonoBehaviour
 
         if (Input.GetButtonDown(down+"Bumper")) {
             _attackController.StartLowAttack();
+            inputRead = true;
         }
 
         if (Input.GetButtonDown(up+"Bumper")) {
             _attackController.StartHighAttack();
             _animator.SetTrigger("AttackAnim");
+            inputRead = true;
+        }
+
+        if (!inputRead) {
+            _animator.SetTrigger("IdleAnim");
         }
     }
 
     void LeftRightSplitInputs(string left, string right) {
+        bool inputRead = false;
 
         float rightAnalogX = Input.GetAxis(left + "AnalogX");
 
@@ -72,18 +85,22 @@ public class FighterController : MonoBehaviour
                 if (movementInput >= 0.5) {
                     _movementController.MoveRight();
                     _animator.SetTrigger("WalkForwardAnim");
+                    inputRead = true;
                 }
                 if (movementInput <= -0.5) {
                     _movementController.MoveLeft();
 
                     _animator.SetTrigger("WalkBackwardAnim");
+                    inputRead = true;
                 }
             } else {
                 if (movementInput >= 0.01) {
                     _animator.SetTrigger("WalkForwardAnim");
+                    inputRead = true;
                 }
                 if (movementInput <= -0.01) {
                     _animator.SetTrigger("WalkBackwardAnim");
+                    inputRead = true;
                 }
                 _movementController.MoveJoystick(movementInput);
             }
@@ -92,11 +109,18 @@ public class FighterController : MonoBehaviour
 
         if (Input.GetButtonDown(right + "Bumper")) {
             _attackController.StartLowAttack();
+            inputRead = true;
         }
 
         if (Input.GetButtonDown(left + "Bumper")) {
             _attackController.StartHighAttack();
             _animator.SetTrigger("AttackAnim");
+            inputRead = true;
+        }
+
+        if (!inputRead) {
+
+            _animator.SetTrigger("IdleAnim");
         }
     }
 
