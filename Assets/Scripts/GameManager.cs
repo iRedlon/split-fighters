@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private UIManager uiManager;
+    
+    private float timeRemaining = 300f;
+
+    void Awake()
     {
-        
+        uiManager = FindObjectOfType<UIManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        uiManager.UpdateTimerText(timeRemaining);
         
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+        }
+        else
+        {
+            EndGame();
+        }
+    }
+
+    void EndGame()
+    {
+        Time.timeScale = 0;
     }
 }
