@@ -7,16 +7,13 @@ public enum ControlSystem { UpDown, LeftRight, DownUp, RightLeft }
 
 public class FighterController : MonoBehaviour
 {
-
-
     public ControlSystem controlSystem = ControlSystem.UpDown;
 
     private MovementController _movementController;
     private AttackController _attackController;
 
     public bool binaryMovement = false;
-
-
+    public bool overrideSplitControls;
 
     void UpDownSplitInputs(string up, string down) {
 
@@ -86,8 +83,25 @@ public class FighterController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        if (overrideSplitControls) {
+            if (Input.GetAxis("Horizontal") > 0.5f) {
+                _movementController.MoveRight();
+            }
+            if (Input.GetAxis("Horizontal") < -0.5f) {
+                _movementController.MoveLeft();
+            }
+            if (Input.GetAxis("Vertical") > 0.5f) {
+                _movementController.Jump();
+            }
 
-        switch(controlSystem) {
+            if (Input.GetKeyDown(KeyCode.UpArrow)) {
+                _attackController.StartHighAttack();
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow)) {
+                _attackController.StartLowAttack();
+            }
+        } else {
+            switch(controlSystem) {
             case ControlSystem.UpDown:
                 UpDownSplitInputs("Left", "Right");
                 break;
@@ -111,6 +125,6 @@ public class FighterController : MonoBehaviour
 
         Debug.Log("Right Analog X: " + Input.GetAxis("RightAnalogX"));
         Debug.Log("Right Analog Y: " + Input.GetAxis("RightAnalogY"));
+        } 
     }
-
 }
