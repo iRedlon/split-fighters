@@ -131,23 +131,34 @@ public class FighterController : MonoBehaviour
     // Update is called once per frame
     void Update() {
         if (overrideSplitControls) {
+            bool inputRead = false;
             if (Input.GetAxis("Horizontal") > 0.5f) {
                 _movementController.MoveRight();
                 _animator.SetTrigger("WalkForwardAnim");
+                inputRead = true;
             }
             if (Input.GetAxis("Horizontal") < -0.5f) {
                 _movementController.MoveLeft();
                 _animator.SetTrigger("WalkBackwardAnim");
+                inputRead = true;
             }
             if (Input.GetAxis("Vertical") > 0.5f) {
                 _movementController.Jump();
+                inputRead = true;
             }
 
             if (Input.GetKeyDown(KeyCode.UpArrow)) {
                 _attackController.StartHighAttack();
+                _animator.SetTrigger("AttackAnim");
+                inputRead = true;
             }
             if (Input.GetKeyDown(KeyCode.DownArrow)) {
                 _attackController.StartLowAttack();
+                inputRead = true;
+            }
+                
+            if (!inputRead) {
+                _animator.SetTrigger("IdleAnim");
             }
         } else {
             switch(controlSystem) {
