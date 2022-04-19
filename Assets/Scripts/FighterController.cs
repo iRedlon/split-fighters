@@ -87,7 +87,6 @@ public class FighterController : MonoBehaviour
                 }
                 if (movementInput <= -0.5) {
                     _movementController.MoveLeft();
-
                     _animator.SetTrigger("WalkBackwardAnim");
                     inputRead = true;
                 }
@@ -134,9 +133,11 @@ public class FighterController : MonoBehaviour
         if (overrideSplitControls) {
             if (Input.GetAxis("Horizontal") > 0.5f) {
                 _movementController.MoveRight();
+                _animator.SetTrigger("WalkForwardAnim");
             }
             if (Input.GetAxis("Horizontal") < -0.5f) {
                 _movementController.MoveLeft();
+                _animator.SetTrigger("WalkBackwardAnim");
             }
             if (Input.GetAxis("Vertical") > 0.5f) {
                 _movementController.Jump();
