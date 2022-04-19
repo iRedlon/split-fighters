@@ -7,6 +7,10 @@ public enum ControlSystem { UpDown, LeftRight, DownUp, RightLeft }
 
 public class FighterController : MonoBehaviour
 {
+
+    public GameObject _animModel;
+    private Animator _animator;
+
     public ControlSystem controlSystem = ControlSystem.UpDown;
 
     private MovementController _movementController;
