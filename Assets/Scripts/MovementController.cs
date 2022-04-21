@@ -19,10 +19,24 @@ public class MovementController : MonoBehaviour
     private Vector3 movement = new Vector3();
     bool jumped = false;
 
+    void AssignOpponent() {
+
+        GameObject[] players;
+        players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players) {
+            if (this.name != player.name) {
+                opponent = player;
+            }
+        }
+        // opponent = GameObject.Find("")
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         _controller = GetComponent<CharacterController>();
+
+        AssignOpponent();
     }
 
     void ReadInputs() {
@@ -76,12 +90,15 @@ public class MovementController : MonoBehaviour
         movement = new Vector3();
 
 
-        // Makes sure the player is facing the opponent at all times
-        if (transform.position.x <= opponent.transform.position.x) {
-            transform.localScale = new Vector3(1, 1, 1);
-        } else {
-            transform.localScale = new Vector3(-1, 1, 1);
+        if (opponent != null) {
+            // Makes sure the player is facing the opponent at all times
+            if (transform.position.x <= opponent.transform.position.x) {
+                transform.localScale = new Vector3(1, 1, 1);
+            } else {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
         }
+        
 
 
     }

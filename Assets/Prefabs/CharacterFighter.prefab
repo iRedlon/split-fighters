@@ -9,16 +9,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5041081513570209437}
-  - component: {fileID: 5041081513570209436}
   - component: {fileID: 5041081513570209427}
-  - component: {fileID: 5041081513570209426}
   - component: {fileID: 5041081513570209424}
   - component: {fileID: 5041081513570209425}
   - component: {fileID: 5041081513570209438}
   - component: {fileID: 5041081513570209439}
+  - component: {fileID: 7792219085386615309}
+  - component: {fileID: 123570228}
   m_Layer: 0
   m_Name: CharacterFighter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,47 +40,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &5041081513570209436
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5041081513570209431}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5f2abebd745ad0e45bfd4bdd3e9b2b9f, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &5041081513570209427
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -89,19 +48,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5041081513570209431}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &5041081513570209426
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5041081513570209431}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!143 &5041081513570209424
 CharacterController:
   m_ObjectHideFlags: 0
@@ -156,6 +102,8 @@ MonoBehaviour:
   highAttackDuration: 0.5
   lowAttackDuration: 0.5
   attackInProgress: 0
+  audioSource: {fileID: 0}
+  wooshAudioClips: []
 --- !u!114 &5041081513570209439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +119,236 @@ MonoBehaviour:
   _animModel: {fileID: 5275101906487502293}
   controlSystem: 0
   binaryMovement: 0
+  overrideSplitControls: 0
+--- !u!114 &7792219085386615309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5041081513570209431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: fe9558d7f9876b84c8f4baa1296b9653, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 123570228}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: LeftStick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 369d4a11-9a2d-432e-9890-967daa7b716e
+    m_ActionName: Gameplay/Left Stick
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 123570228}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: RightStick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 60ada388-2c45-42bb-ab98-ef70698e75f2
+    m_ActionName: Gameplay/Right Stick
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 123570228}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: RightBumper
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cde4bc0c-9d4d-46b7-be3e-d937d94e68f0
+    m_ActionName: Gameplay/Right Bumper
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 123570228}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: LeftBumper
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a0d1c6b7-0e48-4152-b763-e1015dfec1f4
+    m_ActionName: Gameplay/Left Bumper
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 123570228}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: LeftTrigger
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7ae062b7-1f54-4bb2-a79a-127d3a9a7a37
+    m_ActionName: Gameplay/Left Trigger
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 123570228}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: RightTrigger
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 10550af7-bd68-4db5-bcf8-2311c6011a4e
+    m_ActionName: Gameplay/Right Trigger
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 123570228}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: DPad
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 74a5bf9e-555b-4029-be89-18e421e21f40
+    m_ActionName: Gameplay/Dpad
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 123570228}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: UpButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: abee5f26-c3f4-4eda-a570-1a7ac07a6732
+    m_ActionName: Gameplay/Up Button
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 123570228}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: RightButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a7776738-d078-4062-9750-e30f2f28b624
+    m_ActionName: Gameplay/Right Button
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 123570228}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: DownButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 02904b0b-e3e9-4a9d-a792-af256ba0ff5f
+    m_ActionName: Gameplay/Down Button
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 123570228}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: LeftButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 99d2e954-1bde-4bd8-bad5-a45f521ed1d2
+    m_ActionName: Gameplay/Left Button
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &123570228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5041081513570209431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8afae130f0a92a4e8fc3b625f015cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftStick: {x: 0, y: 0}
+  leftBumper: 0
+  leftTrigger: 0
+  dPad: {x: 0, y: 0}
+  rightStick: {x: 0, y: 0}
+  rightBumper: 0
+  rightTrigger: 0
+  upButton: 0
+  downButton: 0
+  leftButton: 0
+  rightButton: 0
 --- !u!1 &5041081514452448730
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,10 +605,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7293625567754156941, guid: 9b17aa1a28b40594ca6bcaee727f968f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 990fe10619b531342a90ee35958d4479, type: 2}
+    - target: {fileID: -6177987432885450188, guid: 9b17aa1a28b40594ca6bcaee727f968f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 990fe10619b531342a90ee35958d4479, type: 2}
+    - target: {fileID: -5967971513814407241, guid: 9b17aa1a28b40594ca6bcaee727f968f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 990fe10619b531342a90ee35958d4479, type: 2}
+    - target: {fileID: -322096343465339192, guid: 9b17aa1a28b40594ca6bcaee727f968f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 990fe10619b531342a90ee35958d4479, type: 2}
     - target: {fileID: 919132149155446097, guid: 9b17aa1a28b40594ca6bcaee727f968f, type: 3}
       propertyPath: m_Name
       value: test_rig_anim
       objectReference: {fileID: 0}
+    - target: {fileID: 3781959067794557449, guid: 9b17aa1a28b40594ca6bcaee727f968f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 990fe10619b531342a90ee35958d4479, type: 2}
+    - target: {fileID: 4939006936009549456, guid: 9b17aa1a28b40594ca6bcaee727f968f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 990fe10619b531342a90ee35958d4479, type: 2}
+    - target: {fileID: 6752086281938670098, guid: 9b17aa1a28b40594ca6bcaee727f968f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 990fe10619b531342a90ee35958d4479, type: 2}
+    - target: {fileID: 7494684334393757621, guid: 9b17aa1a28b40594ca6bcaee727f968f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 990fe10619b531342a90ee35958d4479, type: 2}
+    - target: {fileID: 7820249038990810830, guid: 9b17aa1a28b40594ca6bcaee727f968f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 990fe10619b531342a90ee35958d4479, type: 2}
+    - target: {fileID: 8576527745504311018, guid: 9b17aa1a28b40594ca6bcaee727f968f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 990fe10619b531342a90ee35958d4479, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b17aa1a28b40594ca6bcaee727f968f, type: 3}
 --- !u!1 &5275101906487502293 stripped

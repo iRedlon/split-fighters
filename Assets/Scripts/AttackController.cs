@@ -48,11 +48,11 @@ public class AttackController : MonoBehaviour
     }
 
     public void StartHighAttack() {
-        audioSource.PlayOneShot(wooshAudioClips[Random.Range(0, wooshAudioClips.Length)], 1.0F);
+        //audioSource.PlayOneShot(wooshAudioClips[Random.Range(0, wooshAudioClips.Length)], 1.0F);
         StartCoroutine(HighAttack());
     }
     public void StartLowAttack() {
-        audioSource.PlayOneShot(wooshAudioClips[Random.Range(0, wooshAudioClips.Length)], 1.0F);
+        //audioSource.PlayOneShot(wooshAudioClips[Random.Range(0, wooshAudioClips.Length)], 1.0F);
         StartCoroutine(LowAttack());
     }
 
