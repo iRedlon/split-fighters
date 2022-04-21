@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Runtime;
 
 public enum CharacterState { Block, Attack, Move, HitStun, Idle };
 public enum ControlSystem { UpDown, LeftRight, DownUp, RightLeft }
@@ -18,7 +20,9 @@ public class FighterController : MonoBehaviour
 
     public GameObject _animModel;
     private Animator _animator;
+    private GameManager gameManager;
     private UIManager uiManager;
+    private FighterManager fighterManager;
 
     public ControlSystem controlSystem = ControlSystem.UpDown;
 
@@ -256,6 +260,11 @@ public class FighterController : MonoBehaviour
             // Debug.Log("Fighter Damage Taken: " + damage);
             hitStunTimer = 0f;
             state = CharacterState.HitStun;
+
+            if (health <= 0)
+            {
+                gameManager.EndGame();
+            }
         }
     }
 
@@ -265,12 +274,30 @@ public class FighterController : MonoBehaviour
         _attackController = GetComponent<AttackController>();
         _inputController = GetComponent<InputController>();
         _animator = _animModel.GetComponent<Animator>();
+        gameManager = FindObjectOfType<GameManager>();
         uiManager = FindObjectOfType<UIManager>();
+        fighterManager = FindObjectOfType<FighterManager>();
         //audioSource = GetComponent<AudioSource>();
         health = maxHealth;
         damageTimer = 0;
         hitStunTimer = 0;
         idleReturnTimer = 0;
+        
+        if (this.name != "Character")
+        {
+            fighterManager.p2FC = this;
+        }
+        
+        RandomizeControlSystem();
+    }
+
+    void RandomizeControlSystem()
+    {
+        Array values = Enum.GetValues(typeof(ControlSystem));
+        System.Random random = new System.Random();
+        ControlSystem randomControlSystem = (ControlSystem)values.GetValue(random.Next(values.Length));
+
+        controlSystem = randomControlSystem;
     }
 
     // Update is called once per frame
