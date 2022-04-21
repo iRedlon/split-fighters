@@ -349,11 +349,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cee63eb6a58a66544b59e3bdfbc32329, type: 3}
   - {fileID: 8300000, guid: b9273e1a98a8f0745a72f51cfa124e38, type: 3}
   - {fileID: 8300000, guid: 2c0c3641b0920694383911ad1dc2d995, type: 3}
-  maxHealth: 100
+  maxHealth: 50
   health: 0
   blockDurationS: 0.5
   blockEndLagS: 0.5
   blockTimer: 99
+  attackEndLagS: 0.5
+  attackDurationS: 0.5
+  attackTimer: 99
 --- !u!114 &123570228
 MonoBehaviour:
   m_ObjectHideFlags: 0
