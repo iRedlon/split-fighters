@@ -707,7 +707,6 @@ GameObject:
   - component: {fileID: 1922993971}
   - component: {fileID: 1922993977}
   - component: {fileID: 1922993975}
-  - component: {fileID: 1922993976}
   - component: {fileID: 1922993978}
   m_Layer: 0
   m_Name: Damage Dummy
@@ -799,25 +798,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1922993970}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b867965e6a4f2f34ba782de1960c9849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   opponent: {fileID: 123570227}
   gravity: 9.8
---- !u!114 &1922993976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1922993970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af4f553b8feb78a4fa482f16c621cbb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   damageCooldown: 0.5
   audioSource: {fileID: 1922993978}
   punchAudioClips:
@@ -826,6 +813,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cee63eb6a58a66544b59e3bdfbc32329, type: 3}
   - {fileID: 8300000, guid: b9273e1a98a8f0745a72f51cfa124e38, type: 3}
   - {fileID: 8300000, guid: 2c0c3641b0920694383911ad1dc2d995, type: 3}
+  health: 100
 --- !u!143 &1922993977
 CharacterController:
   m_ObjectHideFlags: 0

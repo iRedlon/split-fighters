@@ -69,12 +69,12 @@ public class AttackController : MonoBehaviour
                         hitBoxHigh.transform.localScale / 2, Quaternion.identity, layerMask);
 
             for (int i = 0; i < hitColliders.Length; i++) {
-                if (hitColliders[i].GetComponent<HealthScript>() != null) {
-                    hitColliders[i].GetComponent<HealthScript>().TakeDamage(1);
-                }
-
                 if (hitColliders[i].GetComponent<Dummy>() != null) {
                     hitColliders[i].GetComponent<Dummy>().KnockBack(10f, new Vector3(1f, 0.1f, 0f));
+                    hitColliders[i].GetComponent<Dummy>().TakeDamage(1);
+                }
+                if (hitColliders[i].GetComponent<FighterController>() != null) {
+                    hitColliders[i].GetComponent<FighterController>().TakeDamage(3f);
                 }
             }
 
@@ -104,12 +104,12 @@ public class AttackController : MonoBehaviour
                         hitBoxLow.transform.localScale / 2, Quaternion.identity, layerMask);
 
             for (int i = 0; i < hitColliders.Length; i++) {
-                if (hitColliders[i].GetComponent<HealthScript>() != null) {
-                    hitColliders[i].GetComponent<HealthScript>().TakeDamage(1);
-                }
-
                 if (hitColliders[i].GetComponent<Dummy>() != null) {
                     hitColliders[i].GetComponent<Dummy>().KnockBack(10f, new Vector3(0.5f, 1f, 0f));
+                    hitColliders[i].GetComponent<Dummy>().TakeDamage(1f);
+                }
+                if (hitColliders[i].GetComponent<FighterController>() != null) {
+                    hitColliders[i].GetComponent<FighterController>().TakeDamage(5f);
                 }
             }
             timer += Time.deltaTime;

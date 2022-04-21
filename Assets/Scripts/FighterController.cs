@@ -2,9 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// enum CharacterState { Block, Attack, Move, HitStun };
+public enum CharacterState { Block, Attack, Move, HitStun, Idle };
 public enum ControlSystem { UpDown, LeftRight, DownUp, RightLeft }
 
+/*
+State Explanations: 
+Block - Hold block and take chip damage for high attack and full damage for low attack, can't move or attack.
+Attack - High attack and low attack, can't move while attacking. Think about attack timing, where both players 
+attack at the same time. If both high or low, cancel, if not, then because of different start/end lag, one move is prioritized and takes effect first.
+Move - Move around, jump and run.
+HitStun - Player is hit by low or high attack, and they can't do anything for half a second. Any hit also causes knock back.
+*/
 public class FighterController : MonoBehaviour
 {
 
@@ -13,11 +21,19 @@ public class FighterController : MonoBehaviour
 
     public ControlSystem controlSystem = ControlSystem.UpDown;
 
+    public CharacterState state = CharacterState.Idle;
+
     private MovementController _movementController;
     private AttackController _attackController;
 
     public bool binaryMovement = false;
     public bool overrideSplitControls;
+    private float damageTimer;
+    public float damageCooldown = 0.5f;
+    public AudioSource audioSource;
+    public AudioClip[] punchAudioClips;
+
+    public float health;
 
     void UpDownSplitInputs(string up, string down) {
 
@@ -121,15 +137,29 @@ public class FighterController : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float damage) {
+        if (damageTimer > damageCooldown) {
+            damageTimer = 0f;
+            audioSource.PlayOneShot(punchAudioClips[Random.Range(0, punchAudioClips.Length)], 1.0F);
+            health -= damage;
+            // Debug.Log("Fighter Damage Taken: " + damage);
+        }
+    }
+
     // Start is called before the first frame update
     void Start() {
         _movementController = GetComponent<MovementController>();
         _attackController = GetComponent<AttackController>();
         _animator = _animModel.GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        health = 100f;
+        damageTimer = 0;
     }
 
     // Update is called once per frame
     void Update() {
+        damageTimer += Time.deltaTime;
+
         if (overrideSplitControls) {
             bool inputRead = false;
             if (Input.GetAxis("Horizontal") > 0.5f) {
