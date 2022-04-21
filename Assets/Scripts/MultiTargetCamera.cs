@@ -6,6 +6,7 @@ using UnityEngine;
 public class MultiTargetCamera : MonoBehaviour
 {
     public List<Transform> targets;
+    public GameObject empty;
 
     public Vector3 offset;
     public float smoothTime = .5f;

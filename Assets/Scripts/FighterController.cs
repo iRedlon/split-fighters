@@ -18,6 +18,7 @@ public class FighterController : MonoBehaviour
 
     public GameObject _animModel;
     private Animator _animator;
+    private UIManager uiManager;
 
     public ControlSystem controlSystem = ControlSystem.UpDown;
 
@@ -38,9 +39,9 @@ public class FighterController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] punchAudioClips;
 
+    public float maxHealth = 100f;
     public float health;
-
-
+    
     void UpDownSplitInputs(string up, string down) {
 
         bool inputRead = false;
@@ -228,6 +229,7 @@ public class FighterController : MonoBehaviour
             damageTimer = 0f;
             // audioSource.PlayOneShot(punchAudioClips[Random.Range(0, punchAudioClips.Length)], 1.0F);
             health -= state == CharacterState.Block && damage == AttackController.HIGH_ATTACK_DAMAGE ? 1f : damage;
+            uiManager.UpdateHealthSlider(gameObject, health, maxHealth);
             // Debug.Log("Fighter Damage Taken: " + damage);
             hitStunTimer = 0f;
             state = CharacterState.HitStun;
@@ -240,8 +242,9 @@ public class FighterController : MonoBehaviour
         _attackController = GetComponent<AttackController>();
         _inputController = GetComponent<InputController>();
         _animator = _animModel.GetComponent<Animator>();
+        uiManager = FindObjectOfType<UIManager>();
         //audioSource = GetComponent<AudioSource>();
-        health = 100f;
+        health = maxHealth;
         damageTimer = 0;
         hitStunTimer = 0;
         idleReturnTimer = 0;
