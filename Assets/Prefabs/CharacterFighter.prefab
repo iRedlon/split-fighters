@@ -86,7 +86,7 @@ MonoBehaviour:
   opponent: {fileID: 0}
   speed: 5
   gravity: 9.8
-  jumpVel: 2
+  jumpVel: 4
 --- !u!114 &5041081513570209438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,10 +310,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 99d2e954-1bde-4bd8-bad5-a45f521ed1d2
     m_ActionName: Gameplay/Left Button
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8cd41ad1-9c14-4c75-9f78-ae238403e2ac
-    m_ActionName: Gameplay/Reset[/XInputControllerWindows/select]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
