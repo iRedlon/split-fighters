@@ -114,6 +114,7 @@ public class FighterController : MonoBehaviour
                 Debug.Log("Block!");
                 inputRead = true;
                 state = CharacterState.Block;
+                _animator.SetTrigger("BlockAnim");
             }
         }
 
@@ -206,6 +207,7 @@ public class FighterController : MonoBehaviour
         if (state == CharacterState.Idle || state == CharacterState.Block) {
             if (blockTrigger >= 0.5) {
                 Debug.Log("Block!");
+                _animator.SetTrigger("BlockAnim");
                 inputRead = true;
                 state = CharacterState.Block;
             }
