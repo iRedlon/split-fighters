@@ -40,6 +40,10 @@ public class FighterController : MonoBehaviour
 
     public float health;
 
+    public float blockDurationS = .5f;
+    public float blockEndLagS = .5f;
+    public float blockTimer = 99;
+
 
     void UpDownSplitInputs(string up, string down) {
 
@@ -108,12 +112,20 @@ public class FighterController : MonoBehaviour
               }
         }
 
+        blockTimer += Time.deltaTime;
         if (state == CharacterState.Idle || state == CharacterState.Block) {
-            if (blockTrigger >= 0.5) {
+            if (blockTrigger >= 0.5 && state != CharacterState.Block && blockTimer > blockDurationS + blockEndLagS) {
                 Debug.Log("Block!");
                 inputRead = true;
+                blockTimer = 0;
                 state = CharacterState.Block;
                 _animator.SetTrigger("BlockAnim");
+            } else if (state == CharacterState.Block) {
+                if (blockTimer >= blockDurationS) {
+                    state = CharacterState.Idle;
+                    // TODO Maybe knock the character back?
+                    Debug.Log("Not Blocking! Has end lag!");
+                }
             }
         }
 
@@ -203,12 +215,20 @@ public class FighterController : MonoBehaviour
               }
         }
 
+        blockTimer += Time.deltaTime;
         if (state == CharacterState.Idle || state == CharacterState.Block) {
-            if (blockTrigger >= 0.5) {
+            if (blockTrigger >= 0.5 && state != CharacterState.Block && blockTimer > blockDurationS + blockEndLagS) {
                 Debug.Log("Block!");
-                _animator.SetTrigger("BlockAnim");
                 inputRead = true;
+                blockTimer = 0;
                 state = CharacterState.Block;
+                _animator.SetTrigger("BlockAnim");
+            } else if (state == CharacterState.Block) { // isBlocking
+                if (blockTimer >= blockDurationS) {
+                    state = CharacterState.Idle;
+                    // TODO Maybe knock the character back?
+                    Debug.Log("Not Blocking! Has end lag!");
+                }
             }
         }
 
