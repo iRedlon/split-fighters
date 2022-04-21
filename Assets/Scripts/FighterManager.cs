@@ -6,7 +6,7 @@ public enum RotationTrigger { Timer, OnHit }
 
 public class FighterManager : MonoBehaviour
 {
-    [SerializeField] private FighterController p1FC, p2FC;
+    [SerializeField] public FighterController p1FC, p2FC;
     
     public RotationTrigger rotationTrigger = RotationTrigger.Timer;
 
@@ -29,8 +29,12 @@ public class FighterManager : MonoBehaviour
         else
         {
             RotateSplitLine(p1FC);
-            // RotateSplitLine(p2FC);
-            
+
+            if (p2FC)
+            {
+                RotateSplitLine(p2FC);
+            }
+
             triggerTimer = 10f;
         }
     }
