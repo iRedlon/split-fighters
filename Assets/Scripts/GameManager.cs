@@ -27,8 +27,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void EndGame()
+    public void EndGame()
     {
+        uiManager.EndGame();
         Time.timeScale = 0;
     }
 }

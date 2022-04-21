@@ -37,4 +37,9 @@ public class UIManager : MonoBehaviour
             player2Slider.value = (float) health / (float) maxHealth;
         }
     }
+
+    public void EndGame()
+    {
+        timerText.text = "Game Over!";
+    }
 }
