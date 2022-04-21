@@ -12,7 +12,7 @@ public class HealthScript : MonoBehaviour
     public void TakeDamage(int dmg) {
         if (damageTimer > damageCooldown) {
             damageTimer = 0f;
-            audioSource.PlayOneShot(punchAudioClips[Random.Range(0, punchAudioClips.Length)], 1.0F);
+            //audioSource.PlayOneShot(punchAudioClips[Random.Range(0, punchAudioClips.Length)], 1.0F);
             Debug.Log("dmg taken: " + dmg);
         }
     }

@@ -13,18 +13,31 @@ public class FighterController : MonoBehaviour
 
     public ControlSystem controlSystem = ControlSystem.UpDown;
 
+    private InputController _inputController;
     private MovementController _movementController;
     private AttackController _attackController;
 
     public bool binaryMovement = false;
     public bool overrideSplitControls;
 
+    
     void UpDownSplitInputs(string up, string down) {
 
         bool inputRead = false;
+        float analogX;
+        float attackButton;
+        float kickButton;
 
-        float analogX = Input.GetAxis(down+"AnalogX");
-
+        if (up == "Left") {
+            analogX = _inputController.rightStick.x;
+            attackButton = _inputController.rightBumper;
+            kickButton = _inputController.leftBumper;
+        } else {
+            analogX = _inputController.leftStick.x;
+            attackButton = _inputController.leftBumper;
+            kickButton = _inputController.rightBumper;
+        }
+        
         if (!_attackController.attackInProgress) {
 
             if (binaryMovement) {
@@ -53,12 +66,12 @@ public class FighterController : MonoBehaviour
 
         }
 
-        if (Input.GetButtonDown(down+"Bumper")) {
+        if (kickButton == 1) {
             _attackController.StartLowAttack();
             inputRead = true;
         }
 
-        if (Input.GetButtonDown(up+"Bumper")) {
+        if (attackButton == 1) {
             _attackController.StartHighAttack();
             _animator.SetTrigger("AttackAnim");
             inputRead = true;
@@ -72,9 +85,25 @@ public class FighterController : MonoBehaviour
     void LeftRightSplitInputs(string left, string right) {
         bool inputRead = false;
 
-        float rightAnalogX = Input.GetAxis(left + "AnalogX");
+        float rightAnalogX;
+        float leftAnalogX;
+        float attackButton;
+        float kickButton;
 
-        float leftAnalogX = Input.GetAxis(right + "AnalogX");
+        if (left == "Left") {
+            leftAnalogX = _inputController.leftStick.x;
+            rightAnalogX = _inputController.rightStick.x;
+
+            attackButton = _inputController.leftBumper;
+            kickButton = _inputController.rightBumper;
+        } else {
+            leftAnalogX = _inputController.rightStick.x;
+            rightAnalogX = _inputController.leftStick.x;
+
+            attackButton = _inputController.rightBumper;
+            kickButton = _inputController.leftBumper;
+        }
+
 
         if (!_attackController.attackInProgress) {
             float movementInput = (rightAnalogX + leftAnalogX) / 2f;
@@ -105,12 +134,12 @@ public class FighterController : MonoBehaviour
 
         }
 
-        if (Input.GetButtonDown(right + "Bumper")) {
+        if (kickButton == 1) {
             _attackController.StartLowAttack();
             inputRead = true;
         }
 
-        if (Input.GetButtonDown(left + "Bumper")) {
+        if (attackButton == 1) {
             _attackController.StartHighAttack();
             _animator.SetTrigger("AttackAnim");
             inputRead = true;
@@ -126,12 +155,14 @@ public class FighterController : MonoBehaviour
     void Start() {
         _movementController = GetComponent<MovementController>();
         _attackController = GetComponent<AttackController>();
+        _inputController = GetComponent<InputController>();
         _animator = _animModel.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update() {
         if (overrideSplitControls) {
+            /*
             if (Input.GetAxis("Horizontal") > 0.5f) {
                 _movementController.MoveRight();
             }
@@ -147,7 +178,7 @@ public class FighterController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.DownArrow)) {
                 _attackController.StartLowAttack();
-            }
+            }*/
         } else {
             switch(controlSystem) {
             case ControlSystem.UpDown:
@@ -164,6 +195,7 @@ public class FighterController : MonoBehaviour
                 break;
         }
 
+            /*
         Debug.Log("Right Bumper: " + Input.GetAxis("RightBumper"));
         Debug.Log("Left Bumper: " + Input.GetAxis("LeftBumper"));
 
@@ -173,6 +205,8 @@ public class FighterController : MonoBehaviour
 
         Debug.Log("Right Analog X: " + Input.GetAxis("RightAnalogX"));
         Debug.Log("Right Analog Y: " + Input.GetAxis("RightAnalogY"));
+            */
         }
     }
+    
 }
