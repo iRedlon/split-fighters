@@ -21,6 +21,9 @@ public class AttackController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] wooshAudioClips;
 
+    public const float HIGH_ATTACK_DAMAGE = 3f; 
+    public const float LOW_ATTACK_DAMAGE = 5f; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,7 +77,7 @@ public class AttackController : MonoBehaviour
                     hitColliders[i].GetComponent<Dummy>().TakeDamage(1);
                 }
                 if (hitColliders[i].GetComponent<FighterController>() != null) {
-                    hitColliders[i].GetComponent<FighterController>().TakeDamage(3f);
+                    hitColliders[i].GetComponent<FighterController>().TakeDamage(HIGH_ATTACK_DAMAGE);
                 }
             }
 
@@ -109,7 +112,7 @@ public class AttackController : MonoBehaviour
                     hitColliders[i].GetComponent<Dummy>().TakeDamage(1f);
                 }
                 if (hitColliders[i].GetComponent<FighterController>() != null) {
-                    hitColliders[i].GetComponent<FighterController>().TakeDamage(5f);
+                    hitColliders[i].GetComponent<FighterController>().TakeDamage(LOW_ATTACK_DAMAGE);
                 }
             }
             timer += Time.deltaTime;
