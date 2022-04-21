@@ -89,13 +89,13 @@ public class FighterController : MonoBehaviour
 
         if (up == "Left") {
             analogX = _inputController.rightStick.x;
-            attackButton = _inputController.rightBumper;
-            kickButton = _inputController.leftBumper;
+            kickButton = _inputController.rightBumper;
+            attackButton = _inputController.leftBumper;
             blockTrigger = _inputController.leftTrigger;
         } else {
             analogX = _inputController.leftStick.x;
-            attackButton = _inputController.leftBumper;
-            kickButton = _inputController.rightBumper;
+            kickButton = _inputController.leftBumper;
+            attackButton = _inputController.rightBumper;
             blockTrigger = _inputController.rightTrigger;
         }
 
