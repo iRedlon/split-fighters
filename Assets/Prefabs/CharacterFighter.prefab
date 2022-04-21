@@ -87,7 +87,7 @@ MonoBehaviour:
   opponent: {fileID: 0}
   speed: 5
   gravity: 9.8
-  jumpVel: 2
+  jumpVel: 4
 --- !u!114 &5041081513570209438
 MonoBehaviour:
   m_ObjectHideFlags: 0

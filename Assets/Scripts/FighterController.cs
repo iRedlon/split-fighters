@@ -52,7 +52,7 @@ public class FighterController : MonoBehaviour
     public float health;
 
     public float blockDurationS = .5f;
-    public float blockEndLagS = .5f;
+    public float blockEndLagS = .25f;
     public float blockTimer = 99;
 
     public void ResetGame() {
@@ -73,28 +73,36 @@ public class FighterController : MonoBehaviour
 
     }
 
+    public float attackEndLagS = .5f;
+    
+    public float attackDurationS = .5f;
+    public float attackTimer = 99;
+
+
     void UpDownSplitInputs(string up, string down) {
 
         bool inputRead = false;
         float analogX;
+        float analogY;
         float attackButton;
         float kickButton;
         float blockTrigger;
 
         if (up == "Left") {
             analogX = _inputController.rightStick.x;
-            attackButton = _inputController.rightBumper;
-            kickButton = _inputController.leftBumper;
+            analogY = _inputController.rightStick.y;
+            kickButton = _inputController.rightBumper;
+            attackButton = _inputController.leftBumper;
             blockTrigger = _inputController.leftTrigger;
         } else {
             analogX = _inputController.leftStick.x;
-            attackButton = _inputController.leftBumper;
-            kickButton = _inputController.rightBumper;
+            analogY = _inputController.leftStick.y;
+            kickButton = _inputController.leftBumper;
+            attackButton = _inputController.rightBumper;
             blockTrigger = _inputController.rightTrigger;
         }
 
         if (!_attackController.attackInProgress && (state == CharacterState.Idle || state == CharacterState.Move)) {
-
             if (binaryMovement) {
                 if (analogX >= 0.5) {
                     _movementController.MoveRight();
@@ -121,24 +129,56 @@ public class FighterController : MonoBehaviour
                 }
 
                 _movementController.MoveJoystick(analogX);
+                
+                if (analogY > 0.5f) {
+                    _movementController.Jump();
+                }
             }
 
         }
 
+        // attackTimer += T
+        // if (state == CharacterState.Idle || state == CharacterState.Attack) {
+        //     if (kickButton == 1 & !attackButton == 1) {
+        //         _attackController.StartLowAttack();
+        //         inputRead = true;
+        //         state = CharacterState.Attack;
+        //     }
+
+        //     if (attackButton == 1) {
+        //         _attackController.StartHighAttack();
+        //         _animator.SetTrigger("AttackAnim");
+        //         state = CharacterState.Attack;
+        //         inputRead = true;
+        //       }
+        // }
+
+        attackTimer += Time.deltaTime;
         if (state == CharacterState.Idle || state == CharacterState.Attack) {
-            if (kickButton == 1) {
-                _attackController.StartLowAttack();
-                inputRead = true;
-                state = CharacterState.Attack;
+            if (state != CharacterState.Attack && attackTimer > attackDurationS + attackEndLagS) { // Can attack
+                if (kickButton == 1 && !(attackButton == 1)) { // Low attack
+                    _attackController.StartLowAttack();
+                    inputRead = true;
+                    state = CharacterState.Attack;
+                    attackTimer = 0;
+                } else if (attackButton == 1 && !(kickButton == 1)) { // High attack
+                    _attackController.StartHighAttack();
+                    _animator.SetTrigger("AttackAnim");
+                    state = CharacterState.Attack;
+                    inputRead = true;
+                    attackTimer = 0;
+                }
+            } else if (state == CharacterState.Attack) {
+                if (attackTimer > attackDurationS) {
+                    state = CharacterState.Idle;
+                    // TODO Maybe knock the character back?
+                    Debug.Log("Not Blocking! Has end lag!");
+                }
             }
-
-            if (attackButton == 1) {
-                _attackController.StartHighAttack();
-                _animator.SetTrigger("AttackAnim");
-                state = CharacterState.Attack;
-                inputRead = true;
-              }
         }
+
+
+
 
         blockTimer += Time.deltaTime;
         if (state == CharacterState.Idle || state == CharacterState.Block) {
@@ -175,6 +215,7 @@ public class FighterController : MonoBehaviour
 
         float rightAnalogX;
         float leftAnalogX;
+        float analogY;
         float attackButton;
         float kickButton;
         float blockTrigger;
@@ -183,12 +224,16 @@ public class FighterController : MonoBehaviour
             leftAnalogX = _inputController.leftStick.x;
             rightAnalogX = _inputController.rightStick.x;
 
+            analogY = (_inputController.leftStick.y + _inputController.rightStick.y) / 2;
+
             attackButton = _inputController.leftBumper;
             kickButton = _inputController.rightBumper;
             blockTrigger = _inputController.leftTrigger;
         } else {
             leftAnalogX = _inputController.rightStick.x;
             rightAnalogX = _inputController.leftStick.x;
+
+            analogY = (_inputController.leftStick.y + _inputController.rightStick.y) / 2;
 
             attackButton = _inputController.rightBumper;
             kickButton = _inputController.leftBumper;
@@ -226,21 +271,48 @@ public class FighterController : MonoBehaviour
                 _movementController.MoveJoystick(movementInput);
             }
 
-        }
-
-        if (state == CharacterState.Idle || state == CharacterState.Attack) {
-            if (kickButton == 1) {
-                _attackController.StartLowAttack();
-                inputRead = true;
-                state = CharacterState.Attack;
+            if (analogY > 0.5f) {
+                _movementController.Jump();
             }
 
-            if (attackButton == 1) {
-                _attackController.StartHighAttack();
-                _animator.SetTrigger("AttackAnim");
-                state = CharacterState.Attack;
-                inputRead = true;
-              }
+        }
+
+
+        // if (state == CharacterState.Idle || state == CharacterState.Attack) {
+        //     if (kickButton == 1) {
+        //         _attackController.StartLowAttack();
+        //         inputRead = true;
+        //         state = CharacterState.Attack;
+        //     }
+
+        //     if (attackButton == 1) {
+        //         _attackController.StartHighAttack();
+        //         _animator.SetTrigger("AttackAnim");
+        //         state = CharacterState.Attack;
+        //         inputRead = true;
+        //     }
+        // }
+
+        attackTimer += Time.deltaTime;
+        if (state == CharacterState.Idle || state == CharacterState.Attack) {
+            if (state != CharacterState.Attack && attackTimer > attackDurationS + attackEndLagS) { // Can attack
+                if (kickButton == 1 && !(attackButton == 1)) { // Low attack
+                    _attackController.StartLowAttack();
+                    inputRead = true;
+                    state = CharacterState.Attack;
+                    attackTimer = 0;
+                } else if (attackButton == 1 && !(kickButton == 1)) { // High attack
+                    _attackController.StartHighAttack();
+                    _animator.SetTrigger("AttackAnim");
+                    state = CharacterState.Attack;
+                    inputRead = true;
+                    attackTimer = 0;
+                }
+            } else if (state == CharacterState.Attack) {
+                if (attackTimer > attackDurationS) {
+                    state = CharacterState.Idle;
+                }
+            }
         }
 
         blockTimer += Time.deltaTime;
