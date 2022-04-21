@@ -77,17 +77,20 @@ public class FighterController : MonoBehaviour
 
         bool inputRead = false;
         float analogX;
+        float analogY;
         float attackButton;
         float kickButton;
         float blockTrigger;
 
         if (up == "Left") {
             analogX = _inputController.rightStick.x;
+            analogY = _inputController.rightStick.y;
             attackButton = _inputController.rightBumper;
             kickButton = _inputController.leftBumper;
             blockTrigger = _inputController.leftTrigger;
         } else {
             analogX = _inputController.leftStick.x;
+            analogY = _inputController.rightStick.y;
             attackButton = _inputController.leftBumper;
             kickButton = _inputController.rightBumper;
             blockTrigger = _inputController.rightTrigger;
@@ -121,6 +124,10 @@ public class FighterController : MonoBehaviour
                 }
 
                 _movementController.MoveJoystick(analogX);
+                
+                if (analogY > 0.5f) {
+                    _movementController.Jump();
+                }
             }
 
         }
@@ -175,6 +182,7 @@ public class FighterController : MonoBehaviour
 
         float rightAnalogX;
         float leftAnalogX;
+        float analogY;
         float attackButton;
         float kickButton;
         float blockTrigger;
@@ -183,12 +191,16 @@ public class FighterController : MonoBehaviour
             leftAnalogX = _inputController.leftStick.x;
             rightAnalogX = _inputController.rightStick.x;
 
+            analogY = (_inputController.leftStick.y + _inputController.rightStick.y) / 2;
+
             attackButton = _inputController.leftBumper;
             kickButton = _inputController.rightBumper;
             blockTrigger = _inputController.leftTrigger;
         } else {
             leftAnalogX = _inputController.rightStick.x;
             rightAnalogX = _inputController.leftStick.x;
+
+            analogY = (_inputController.leftStick.y + _inputController.rightStick.y) / 2;
 
             attackButton = _inputController.rightBumper;
             kickButton = _inputController.leftBumper;
@@ -224,6 +236,10 @@ public class FighterController : MonoBehaviour
                     state = CharacterState.Move;
                 }
                 _movementController.MoveJoystick(movementInput);
+            }
+
+            if (analogY > 0.5f) {
+                _movementController.Jump();
             }
 
         }
