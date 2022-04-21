@@ -161,28 +161,8 @@ public class FighterController : MonoBehaviour
 
         }
 
-        // attackTimer += T
-        // if (state == CharacterState.Idle || state == CharacterState.Attack) {
-        //     if (kickButton == 1 & !attackButton == 1) {
-        //         _attackController.StartLowAttack();
-        //         inputRead = true;
-        //         state = CharacterState.Attack;
-        //     }
-
-        //     if (attackButton == 1) {
-        //         _attackController.StartHighAttack();
-        //         _animator.SetTrigger("AttackAnim");
-        //         state = CharacterState.Attack;
-        //         inputRead = true;
-        //       }
-        // }
-
-
-
-
-
         blockTimer += Time.deltaTime;
-        if (state == CharacterState.Idle || state == CharacterState.Block) {
+        if (state == CharacterState.Idle || state == CharacterState.Block || state == CharacterState.Move) {
             if (blockTrigger >= 0.5 && state != CharacterState.Block && blockTimer > blockDurationS + blockEndLagS) {
                 Debug.Log("Block!");
                 inputRead = true;
@@ -198,6 +178,21 @@ public class FighterController : MonoBehaviour
             }
         }
 
+        // attackTimer += T
+        // if (state == CharacterState.Idle || state == CharacterState.Attack) {
+        //     if (kickButton == 1 & !attackButton == 1) {
+        //         _attackController.StartLowAttack();
+        //         inputRead = true;
+        //         state = CharacterState.Attack;
+        //     }
+
+        //     if (attackButton == 1) {
+        //         _attackController.StartHighAttack();
+        //         _animator.SetTrigger("AttackAnim");
+        //         state = CharacterState.Attack;
+        //         inputRead = true;
+        //       }
+        // }
 
         if (!inputRead) {
             _animator.SetTrigger("IdleAnim");
@@ -278,6 +273,23 @@ public class FighterController : MonoBehaviour
             }
         }
 
+        blockTimer += Time.deltaTime;
+        if (state == CharacterState.Idle || state == CharacterState.Block || state == CharacterState.Move) {
+            if (blockTrigger >= 0.5 && state != CharacterState.Block && blockTimer > blockDurationS + blockEndLagS) {
+                Debug.Log("Block!");
+                inputRead = true;
+                blockTimer = 0;
+                state = CharacterState.Block;
+                _animator.SetTrigger("BlockAnim");
+            } else if (state == CharacterState.Block) { // isBlocking
+                if (blockTimer >= blockDurationS) {
+                    state = CharacterState.Idle;
+                    // TODO Maybe knock the character back?
+                    Debug.Log("Not Blocking! Has end lag!");
+                }
+            }
+        }
+
         if (!_attackController.attackInProgress && (state == CharacterState.Idle || state == CharacterState.Move)) {
             float movementInput = (rightAnalogX + leftAnalogX) / 2f;
 
@@ -316,22 +328,6 @@ public class FighterController : MonoBehaviour
 
 
 
-        blockTimer += Time.deltaTime;
-        if (state == CharacterState.Idle || state == CharacterState.Block) {
-            if (blockTrigger >= 0.5 && state != CharacterState.Block && blockTimer > blockDurationS + blockEndLagS) {
-                Debug.Log("Block!");
-                inputRead = true;
-                blockTimer = 0;
-                state = CharacterState.Block;
-                _animator.SetTrigger("BlockAnim");
-            } else if (state == CharacterState.Block) { // isBlocking
-                if (blockTimer >= blockDurationS) {
-                    state = CharacterState.Idle;
-                    // TODO Maybe knock the character back?
-                    Debug.Log("Not Blocking! Has end lag!");
-                }
-            }
-        }
 
 
         if (!inputRead) {
