@@ -188,15 +188,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 980651655297810584, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
       propertyPath: m_Name
-      value: Divider GR
+      value: Divider 2H
       objectReference: {fileID: 0}
     - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
       propertyPath: player
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
       propertyPath: orientation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
+      propertyPath: playerOneColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
+      propertyPath: playerTwoColor.g
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
@@ -480,15 +488,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 980651655297810584, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
       propertyPath: m_Name
-      value: Divider BL
+      value: Divider 2H
       objectReference: {fileID: 0}
     - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
       propertyPath: orient
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
+      propertyPath: player
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
       propertyPath: orientation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
+      propertyPath: playerOneColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
+      propertyPath: playerTwoColor.g
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
@@ -508,6 +528,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 4560541052135666812, guid: 8fb26e489e8a0154bbae86774161073a, type: 3}
+      propertyPath: opponent
+      value: 
+      objectReference: {fileID: 1896569428}
     - target: {fileID: 6282307358940377949, guid: 8fb26e489e8a0154bbae86774161073a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -621,7 +645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 980651655297810584, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
       propertyPath: m_Name
-      value: Divider GT
+      value: Divider 2V
       objectReference: {fileID: 0}
     - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
       propertyPath: play
@@ -629,6 +653,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
       propertyPath: player
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
+      propertyPath: playerOneColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
+      propertyPath: playerTwoColor.g
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -700,7 +732,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 980651655297810584, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
       propertyPath: m_Name
-      value: Divider BB
+      value: Divider 1V
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
+      propertyPath: playerOneColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788316568910126212, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}
+      propertyPath: playerTwoColor.g
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 223c7226a36dfaa4bbc030dfa3be5d35, type: 3}

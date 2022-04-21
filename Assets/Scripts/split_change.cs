@@ -12,6 +12,8 @@ public class split_change : MonoBehaviour
     
     public Orientation orientation = Orientation.Horizontal;
     public Player player = Player.Player1;
+    public Color playerOneColor;
+    public Color playerTwoColor;
     void Start()
     {
         mesh = GetComponent<MeshRenderer>();
@@ -31,10 +33,10 @@ public class split_change : MonoBehaviour
                 }
 
                 if (player == Player.Player1){
-                    gameObject.GetComponent<MeshRenderer>().material.color = new Color(0, 255, 0); //green
+                    gameObject.GetComponent<MeshRenderer>().material.color = playerOneColor; //green
                 }
                 if (player == Player.Player2){
-                    gameObject.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 255); //blue
+                    gameObject.GetComponent<MeshRenderer>().material.color = playerTwoColor; //blue
                 }
                 break;
             case ControlSystem.DownUp:
@@ -45,10 +47,10 @@ public class split_change : MonoBehaviour
                     mesh.enabled = true;
                 }
                 if (player == Player.Player1){
-                    gameObject.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 255); //blue
+                    gameObject.GetComponent<MeshRenderer>().material.color = playerTwoColor; //blue
                 }
                 if (player == Player.Player2){
-                    gameObject.GetComponent<MeshRenderer>().material.color = new Color(0, 255, 0); //green
+                    gameObject.GetComponent<MeshRenderer>().material.color = playerOneColor; //green
                 }
                 break;
             case ControlSystem.LeftRight:
@@ -59,10 +61,10 @@ public class split_change : MonoBehaviour
                     mesh.enabled = true;
                 }
                 if (player == Player.Player1){
-                    gameObject.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 255); 
+                    gameObject.GetComponent<MeshRenderer>().material.color = playerOneColor;
                 }
                 if (player == Player.Player2){
-                    gameObject.GetComponent<MeshRenderer>().material.color = new Color(0, 255, 0); 
+                    gameObject.GetComponent<MeshRenderer>().material.color = playerTwoColor;
                 }
                 break;
             case ControlSystem.RightLeft:
@@ -73,10 +75,10 @@ public class split_change : MonoBehaviour
                     mesh.enabled = true;
                 }
                 if (player == Player.Player1){
-                    gameObject.GetComponent<MeshRenderer>().material.color = new Color(0, 255, 0); 
+                    gameObject.GetComponent<MeshRenderer>().material.color = playerTwoColor;
                 }
                 if (player == Player.Player2){
-                    gameObject.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 255); 
+                    gameObject.GetComponent<MeshRenderer>().material.color = playerOneColor;
                 }
                 break;
         }
