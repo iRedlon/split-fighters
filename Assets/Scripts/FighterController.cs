@@ -345,7 +345,7 @@ public class FighterController : MonoBehaviour
     public void TakeDamage(float damage) {
         if (damageTimer > damageCooldown) {
             damageTimer = 0f;
-            // audioSource.PlayOneShot(punchAudioClips[Random.Range(0, punchAudioClips.Length)], 1.0F);
+            audioSource.PlayOneShot(punchAudioClips[UnityEngine.Random.Range(0, punchAudioClips.Length)], 1.0F);
             health -= state == CharacterState.Block && damage == AttackController.HIGH_ATTACK_DAMAGE ? 1f : damage;
             uiManager.UpdateHealthSlider(gameObject, health, maxHealth);
             // Debug.Log("Fighter Damage Taken: " + damage);
@@ -368,7 +368,7 @@ public class FighterController : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         uiManager = FindObjectOfType<UIManager>();
         fighterManager = FindObjectOfType<FighterManager>();
-        //audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         health = maxHealth;
         damageTimer = 0;
         hitStunTimer = 0;
