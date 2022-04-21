@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5041081513570209424}
   - component: {fileID: 5041081513570209425}
   - component: {fileID: 5041081513570209438}
-  - component: {fileID: 5041081513570209439}
   - component: {fileID: 7792219085386615309}
+  - component: {fileID: 5041081513570209439}
   - component: {fileID: 123570228}
   - component: {fileID: 8579767704029811732}
   m_Layer: 0
@@ -109,30 +109,6 @@ MonoBehaviour:
   attackInProgress: 0
   audioSource: {fileID: 0}
   wooshAudioClips: []
---- !u!114 &5041081513570209439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5041081513570209431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac25bafc9934e784fa61d336c76e39d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animModel: {fileID: 5275101906487502293}
-  controlSystem: 0
-  state: 4
-  binaryMovement: 0
-  overrideSplitControls: 0
-  damageCooldown: 0.5
-  hitStunCooldown: 0.5
-  idleReturnCooldown: 0.15
-  audioSource: {fileID: 0}
-  punchAudioClips: []
-  maxHealth: 100
-  health: 0
 --- !u!114 &7792219085386615309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,11 +310,44 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 99d2e954-1bde-4bd8-bad5-a45f521ed1d2
     m_ActionName: Gameplay/Left Button
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8cd41ad1-9c14-4c75-9f78-ae238403e2ac
+    m_ActionName: Gameplay/Reset[/XInputControllerWindows/select]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5041081513570209439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5041081513570209431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac25bafc9934e784fa61d336c76e39d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animModel: {fileID: 5275101906487502293}
+  p1StartingPosition: {x: -3, y: 0, z: 0}
+  p2StartingPosition: {x: 3, y: 0, z: 0}
+  controlSystem: 0
+  state: 4
+  binaryMovement: 0
+  overrideSplitControls: 0
+  damageCooldown: 0.5
+  hitStunCooldown: 0.5
+  idleReturnCooldown: 0.15
+  audioSource: {fileID: 0}
+  punchAudioClips: []
+  maxHealth: 100
+  health: 0
+  blockDurationS: 0.5
+  blockEndLagS: 0.5
+  blockTimer: 99
 --- !u!114 &123570228
 MonoBehaviour:
   m_ObjectHideFlags: 0

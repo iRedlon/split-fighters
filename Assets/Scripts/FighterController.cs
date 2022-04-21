@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum CharacterState { Block, Attack, Move, HitStun, Idle };
 public enum ControlSystem { UpDown, LeftRight, DownUp, RightLeft }
@@ -19,6 +20,10 @@ public class FighterController : MonoBehaviour
     public GameObject _animModel;
     private Animator _animator;
     private UIManager uiManager;
+
+
+    public Vector3 p1StartingPosition = new Vector3(-3 ,0 ,0);
+    public Vector3 p2StartingPosition = new Vector3(3, 0, 0);
 
     public ControlSystem controlSystem = ControlSystem.UpDown;
 
@@ -46,6 +51,23 @@ public class FighterController : MonoBehaviour
     public float blockEndLagS = .5f;
     public float blockTimer = 99;
 
+    public void ResetGame() {
+
+        float upButton = _inputController.upButton;
+
+        if (upButton >= 0.5f) {
+            if (this.name == "Character") {
+                transform.position = p1StartingPosition;
+            } else {
+                transform.position = p2StartingPosition;
+            }
+            health = maxHealth;
+            uiManager.UpdateHealthSlider(gameObject, health, maxHealth);
+
+        }
+
+        
+    }
 
     void UpDownSplitInputs(string up, string down) {
 
@@ -275,6 +297,7 @@ public class FighterController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        ResetGame();
         damageTimer += Time.deltaTime;
 
         if (state == CharacterState.HitStun && hitStunTimer > hitStunCooldown) {

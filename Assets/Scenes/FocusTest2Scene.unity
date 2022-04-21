@@ -1163,5 +1163,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7792219085386615309, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792219085386615309, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_ActionId
+      value: 8cd41ad1-9c14-4c75-9f78-ae238403e2ac
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792219085386615309, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_ActionName
+      value: Gameplay/Reset[/DualSenseGamepadHID/leftStickPress,/XInputControllerWindows/leftStickPress]
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792219085386615309, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792219085386615309, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792219085386615309, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 613587919}
+    - target: {fileID: 7792219085386615309, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792219085386615309, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792219085386615309, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FighterController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792219085386615309, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2840adef06922c469f10f192251eea5, type: 3}
