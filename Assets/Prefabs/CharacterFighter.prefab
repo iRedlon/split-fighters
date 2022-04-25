@@ -392,8 +392,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecda59427846cf041b63889b838e35d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p1Color: {r: 1, g: 0, b: 0, a: 0}
+  fighterController: {fileID: 5041081513570209439}
+  p1Color: {r: 1, g: 0.49801764, b: 0, a: 0}
   p2Color: {r: 0.048089504, g: 0, b: 1, a: 0}
+  p3Color: {r: 1, g: 0, b: 0.818305, a: 0}
+  p4Color: {r: 0, g: 0.92019224, b: 1, a: 0}
+  Head: {fileID: 35432109398946412}
+  Torso: {fileID: 597096011675993962}
+  BicepL: {fileID: 2197203405325868411}
+  ArmL: {fileID: 2299913772508905734}
+  LegL: {fileID: 4561182800990495819}
+  ThighL: {fileID: 2113939966335364828}
+  BicepR: {fileID: 7927486286932303565}
+  ArmR: {fileID: 1511179256497410975}
+  LegR: {fileID: 3085901653216158412}
+  ThighR: {fileID: 5358773958990569569}
   models:
   - {fileID: 35432109398946412}
   - {fileID: 2197203405325868411}
