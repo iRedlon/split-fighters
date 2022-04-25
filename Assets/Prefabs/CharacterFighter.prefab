@@ -393,6 +393,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterController: {fileID: 5041081513570209439}
+  hitColor: {r: 1, g: 1, b: 1, a: 0}
+  mainP1Color: {r: 1, g: 0.2926092, b: 0, a: 0}
+  mainP2Color: {r: 0, g: 0.37897396, b: 1, a: 0}
   p1Color: {r: 1, g: 0.49801764, b: 0, a: 0}
   p2Color: {r: 0.048089504, g: 0, b: 1, a: 0}
   p3Color: {r: 1, g: 0, b: 0.818305, a: 0}

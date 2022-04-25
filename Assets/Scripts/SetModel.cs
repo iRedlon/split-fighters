@@ -6,6 +6,11 @@ public class SetModel : MonoBehaviour
 {
     public FighterController fighterController;
 
+    public Color hitColor;
+    public Color mainP1Color;
+    public Color mainP2Color;
+
+
     public Color p1Color;
     public Color p2Color;
 
@@ -28,13 +33,24 @@ public class SetModel : MonoBehaviour
     public GameObject LegR;
     public GameObject ThighR;
 
+    List<GameObject> allLimbs = new List<GameObject>();
+
     // public ControlSystem controlScheme = default;
 
     public List<GameObject> models;
     // Start is called before the first frame update
     void Start()
     {
-       
+        allLimbs.Add(Head);
+        allLimbs.Add(Torso);
+        allLimbs.Add(BicepL);
+        allLimbs.Add(BicepR);
+        allLimbs.Add(ArmL);
+        allLimbs.Add(ArmR);
+        allLimbs.Add(LegL);
+        allLimbs.Add(LegR);
+        allLimbs.Add(ThighR);
+        allLimbs.Add(ThighL);
     }
 
     void SetModelColor_UpDownSplitInputs(Color leftControllerColor, Color rightControllerColor) {
@@ -99,6 +115,31 @@ public class SetModel : MonoBehaviour
     }
     */
 
+    public void StartTakeDamageEffect(float duration) {
+        StartCoroutine(TakeDamageEffect(duration));
+    }
+
+
+    // duration (in secs)
+    IEnumerator TakeDamageEffect(float duration) {
+        
+        float rate = 0.1f;
+
+        int count = (int)(duration / rate);
+
+        int i = 0;
+        while (i < count) {
+            foreach (GameObject model in allLimbs) {
+                model.GetComponent<MeshRenderer>().material.color = hitColor;
+            }
+
+            yield return new WaitForSeconds(rate);
+
+            i++;
+        }
+
+    }
+
     void SetTorsoColor(Color c) {
         SetLimbColor(Head, c);
         SetLimbColor(Torso, c);
@@ -109,11 +150,11 @@ public class SetModel : MonoBehaviour
     {
         if (this.name == "Character") {
             SetModelColor(p1Color, p2Color);
-            SetTorsoColor(p1Color);
+            SetTorsoColor(mainP1Color);
         } else {
             // SetModelColor(p2Color);
             SetModelColor(p3Color, p4Color);
-            SetTorsoColor(p3Color);
+            SetTorsoColor(mainP2Color);
         }
     }
 }

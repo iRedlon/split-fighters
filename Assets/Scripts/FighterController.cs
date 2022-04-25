@@ -36,6 +36,7 @@ public class FighterController : MonoBehaviour
     private InputController _inputController;
     private MovementController _movementController;
     private AttackController _attackController;
+    private SetModel _modelController;
 
     public bool binaryMovement = false;
     public bool overrideSplitControls;
@@ -344,6 +345,8 @@ public class FighterController : MonoBehaviour
 
     public void TakeDamage(float damage) {
         if (damageTimer > damageCooldown) {
+            _modelController.StartTakeDamageEffect(damageCooldown);
+
             damageTimer = 0f;
             audioSource.PlayOneShot(punchAudioClips[UnityEngine.Random.Range(0, punchAudioClips.Length)], 1.0F);
             health -= state == CharacterState.Block && damage == AttackController.HIGH_ATTACK_DAMAGE ? 1f : damage;
@@ -365,6 +368,7 @@ public class FighterController : MonoBehaviour
         _attackController = GetComponent<AttackController>();
         _inputController = GetComponent<InputController>();
         _animator = _animModel.GetComponent<Animator>();
+        _modelController = GetComponent<SetModel>();
 
         gameManager = FindObjectOfType<GameManager>();
         uiManager = FindObjectOfType<UIManager>();
