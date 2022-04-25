@@ -37,7 +37,7 @@ public class SetModel : MonoBehaviour
 
     // public ControlSystem controlScheme = default;
 
-    public List<GameObject> models;
+    // public List<GameObject> models;
     // Start is called before the first frame update
     void Start()
     {
