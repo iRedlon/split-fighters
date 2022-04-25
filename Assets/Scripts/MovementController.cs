@@ -19,24 +19,13 @@ public class MovementController : MonoBehaviour
     private Vector3 movement = new Vector3();
     bool jumped = false;
 
-    void AssignOpponent() {
 
-        GameObject[] players;
-        players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject player in players) {
-            if (this.name != player.name) {
-                opponent = player;
-            }
-        }
-        // opponent = GameObject.Find("")
-    }
 
     // Start is called before the first frame update
     void Start()
     {
         _controller = GetComponent<CharacterController>();
 
-        AssignOpponent();
     }
 
     void ReadInputs() {
