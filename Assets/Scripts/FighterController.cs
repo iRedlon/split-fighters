@@ -365,6 +365,7 @@ public class FighterController : MonoBehaviour
         _attackController = GetComponent<AttackController>();
         _inputController = GetComponent<InputController>();
         _animator = _animModel.GetComponent<Animator>();
+
         gameManager = FindObjectOfType<GameManager>();
         uiManager = FindObjectOfType<UIManager>();
         fighterManager = FindObjectOfType<FighterManager>();
