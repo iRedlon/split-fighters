@@ -170,6 +170,9 @@ public class FighterController : MonoBehaviour
                 blockTimer = 0;
                 state = CharacterState.Block;
                 _animator.SetTrigger("BlockAnim");
+
+                _attackController.StartShield(blockDurationS);
+
             } else if (state == CharacterState.Block) {
                 if (blockTimer >= blockDurationS) {
                     state = CharacterState.Idle;
@@ -282,6 +285,9 @@ public class FighterController : MonoBehaviour
                 blockTimer = 0;
                 state = CharacterState.Block;
                 _animator.SetTrigger("BlockAnim");
+
+
+                _attackController.StartShield(blockDurationS);
             } else if (state == CharacterState.Block) { // isBlocking
                 if (blockTimer >= blockDurationS) {
                     state = CharacterState.Idle;
