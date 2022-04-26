@@ -67,10 +67,7 @@ public class FighterController : MonoBehaviour
             }
             health = maxHealth;
             uiManager.UpdateHealthSlider(gameObject, health, maxHealth);
-
         }
-
-
     }
 
     public float attackEndLagS = .5f;

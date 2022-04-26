@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private UIManager uiManager;
     
     private float timeRemaining = 300f;
+    private bool gameOver = false;
 
     void Awake()
     {
@@ -27,8 +28,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ResetGame()
+    {
+        gameOver = false;
+        timeRemaining = 300f;
+        uiManager.ResetGame();
+        Time.timeScale = 1f;
+
+        foreach (FighterController fc in GetComponents<FighterController>())
+        {
+            fc.ResetGame();
+        }
+    }
+
     public void EndGame()
     {
+        gameOver = true;
         uiManager.EndGame();
         Time.timeScale = 0;
     }

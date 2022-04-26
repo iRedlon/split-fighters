@@ -9,6 +9,7 @@ public enum PlayerNum { Player1, Player2 }
 
 public class UIManager : MonoBehaviour
 {
+    // Colors to represent each player (shown on controller icon and the fighter's limbs)
     public Color player1Color = new Color(255f, 119f, 0f);
     public Color player2Color = new Color(244f, 255f, 0f);
     public Color player3Color = new Color(255f, 0f, 207f);
@@ -61,6 +62,11 @@ public class UIManager : MonoBehaviour
         {
             player2Slider.value = ratio;
         }
+    }
+
+    public void ResetGame()
+    {
+        gameOver = false;
     }
 
     public void EndGame()
