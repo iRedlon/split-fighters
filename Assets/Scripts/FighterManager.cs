@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,13 @@ public class FighterManager : MonoBehaviour
     
     public RotationTrigger rotationTrigger = RotationTrigger.Timer;
 
-    private float triggerTimer = 10f;
+    public float currentTriggerTimer = 20f;
+    public float triggerTimer = 20f;
+
+    void Awake()
+    {
+        currentTriggerTimer = triggerTimer;
+    }
 
     void Update()
     {
@@ -22,9 +29,9 @@ public class FighterManager : MonoBehaviour
 
     void UpdateTriggerTimer()
     {
-        if (triggerTimer > 0)
+        if (currentTriggerTimer > 0)
         {
-            triggerTimer -= Time.deltaTime;
+            currentTriggerTimer -= Time.deltaTime;
         }
         else
         {
@@ -35,7 +42,8 @@ public class FighterManager : MonoBehaviour
                 RotateSplitLine(p2FC);
             }
 
-            triggerTimer = 10f;
+            triggerTimer -= 2f;
+            currentTriggerTimer = Math.Max(5f, triggerTimer);
         }
     }
 
