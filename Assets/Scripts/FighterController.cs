@@ -68,10 +68,7 @@ public class FighterController : MonoBehaviour
             }
             health = maxHealth;
             uiManager.UpdateHealthSlider(gameObject, health, maxHealth);
-
         }
-
-
     }
 
     public float attackEndLagS = .5f;
@@ -141,6 +138,7 @@ public class FighterController : MonoBehaviour
                     inputRead = true;
                     state = CharacterState.Move;
                 }
+
             } else {
                 if (analogX >= 0.01) {
                     _animator.SetTrigger("WalkForwardAnim");
@@ -156,7 +154,7 @@ public class FighterController : MonoBehaviour
                 _movementController.MoveJoystick(analogX);
                 
                 if (analogY > 0.5f) {
-                    _movementController.Jump();
+                    _movementController.Jump(analogY*2, binaryMovement);
                 }
             }
 
@@ -164,6 +162,18 @@ public class FighterController : MonoBehaviour
 
         blockTimer += Time.deltaTime;
         if (state == CharacterState.Idle || state == CharacterState.Block || state == CharacterState.Move) {
+            if (blockTrigger >= 0.5) {
+                inputRead = true;
+                state = CharacterState.Block;
+                _animator.SetTrigger("BlockAnim");
+                _attackController.StartShield();
+            } else {
+                _animator.ResetTrigger("BlockAnim");
+                _attackController.EndShield();
+            }
+
+            /*
+
             if (blockTrigger >= 0.5 && state != CharacterState.Block && blockTimer > blockDurationS + blockEndLagS) {
                 Debug.Log("Block!");
                 inputRead = true;
@@ -179,7 +189,7 @@ public class FighterController : MonoBehaviour
                     // TODO Maybe knock the character back?
                     Debug.Log("Not Blocking! Has end lag!");
                 }
-            }
+            }*/
         }
 
         // attackTimer += T
@@ -279,6 +289,18 @@ public class FighterController : MonoBehaviour
 
         blockTimer += Time.deltaTime;
         if (state == CharacterState.Idle || state == CharacterState.Block || state == CharacterState.Move) {
+            if (blockTrigger >= 0.5) {
+                inputRead = true;
+                state = CharacterState.Block;
+                _animator.SetTrigger("BlockAnim");
+                _attackController.StartShield();
+            } else {
+                _animator.ResetTrigger("BlockAnim");
+                _attackController.EndShield();
+            }
+
+            /*
+
             if (blockTrigger >= 0.5 && state != CharacterState.Block && blockTimer > blockDurationS + blockEndLagS) {
                 Debug.Log("Block!");
                 inputRead = true;
@@ -294,11 +316,12 @@ public class FighterController : MonoBehaviour
                     // TODO Maybe knock the character back?
                     Debug.Log("Not Blocking! Has end lag!");
                 }
-            }
+            }*/
         }
 
         if (!_attackController.attackInProgress && (state == CharacterState.Idle || state == CharacterState.Move)) {
             float movementInput = (rightAnalogX + leftAnalogX) / 2f;
+           
 
             if(binaryMovement) {
                 if (movementInput >= 0.5) {
@@ -313,6 +336,7 @@ public class FighterController : MonoBehaviour
                     inputRead = true;
                     state = CharacterState.Move;
                 }
+                
             } else {
                 if (movementInput >= 0.01) {
                     _animator.SetTrigger("WalkForwardAnim");
@@ -327,8 +351,8 @@ public class FighterController : MonoBehaviour
                 _movementController.MoveJoystick(movementInput);
             }
 
-            if (analogY > 0.5f) {
-                _movementController.Jump();
+            if (analogY*2 > 0.5f) {
+                _movementController.Jump(analogY*2, binaryMovement);
             }
 
         }
@@ -349,7 +373,7 @@ public class FighterController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage) {
+    public void TakeDamage(float damage, int direction) {
         if (damageTimer > damageCooldown) {
             _modelController.StartTakeDamageEffect(damageCooldown);
 
@@ -357,9 +381,10 @@ public class FighterController : MonoBehaviour
             audioSource.PlayOneShot(punchAudioClips[UnityEngine.Random.Range(0, punchAudioClips.Length)], 1.0F);
             health -= state == CharacterState.Block && damage == AttackController.HIGH_ATTACK_DAMAGE ? 1f : damage;
             uiManager.UpdateHealthSlider(gameObject, health, maxHealth);
-            // Debug.Log("Fighter Damage Taken: " + damage);
             hitStunTimer = 0f;
             state = CharacterState.HitStun;
+
+            _movementController.Knockback(damage, direction);
 
             if (health <= 0)
             {
