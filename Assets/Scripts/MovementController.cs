@@ -15,6 +15,8 @@ public class MovementController : MonoBehaviour
     public float jumpVel = 3f;
     public float damping = 0.9f;
 
+    public float knockbackScale = 10f;
+
 
     private Vector3 gravityVec = new Vector3();
     private Vector3 movement = new Vector3();
@@ -57,8 +59,8 @@ public class MovementController : MonoBehaviour
         movement = new Vector3(1f, 0, 0);
     }
 
-    public void Knockback(int direction) {
-        knockback = new Vector3(direction * 2f, 0, 0);
+    public void Knockback(float damage, int direction) {
+        knockback = new Vector3(direction * knockbackScale * damage, 0, 0);
     }
 
     public void Jump() {

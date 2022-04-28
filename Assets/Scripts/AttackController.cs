@@ -118,7 +118,7 @@ public class AttackController : MonoBehaviour
         hitBoxLow.GetComponent<MeshRenderer>().enabled = false;
         lowAttacked = false;
     }
-
+    
     void HandleAttackCollisions(Collider[] hitColliders, float attackDamage) {
         for (int i = 0; i < hitColliders.Length; i++) {
             if (hitColliders[i].GetComponent<Dummy>() != null) {

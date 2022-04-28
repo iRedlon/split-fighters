@@ -354,11 +354,10 @@ public class FighterController : MonoBehaviour
             audioSource.PlayOneShot(punchAudioClips[UnityEngine.Random.Range(0, punchAudioClips.Length)], 1.0F);
             health -= state == CharacterState.Block && damage == AttackController.HIGH_ATTACK_DAMAGE ? 1f : damage;
             uiManager.UpdateHealthSlider(gameObject, health, maxHealth);
-            // Debug.Log("Fighter Damage Taken: " + damage);
             hitStunTimer = 0f;
             state = CharacterState.HitStun;
 
-            _movementController.Knockback(direction);
+            _movementController.Knockback(damage, direction);
 
             if (health <= 0)
             {
