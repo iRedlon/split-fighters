@@ -138,6 +138,7 @@ public class FighterController : MonoBehaviour
                     inputRead = true;
                     state = CharacterState.Move;
                 }
+
             } else {
                 if (analogX >= 0.01) {
                     _animator.SetTrigger("WalkForwardAnim");
@@ -153,7 +154,7 @@ public class FighterController : MonoBehaviour
                 _movementController.MoveJoystick(analogX);
                 
                 if (analogY > 0.5f) {
-                    _movementController.Jump();
+                    _movementController.Jump(analogY*2, binaryMovement);
                 }
             }
 
@@ -320,6 +321,7 @@ public class FighterController : MonoBehaviour
 
         if (!_attackController.attackInProgress && (state == CharacterState.Idle || state == CharacterState.Move)) {
             float movementInput = (rightAnalogX + leftAnalogX) / 2f;
+           
 
             if(binaryMovement) {
                 if (movementInput >= 0.5) {
@@ -334,6 +336,7 @@ public class FighterController : MonoBehaviour
                     inputRead = true;
                     state = CharacterState.Move;
                 }
+                
             } else {
                 if (movementInput >= 0.01) {
                     _animator.SetTrigger("WalkForwardAnim");
@@ -348,8 +351,8 @@ public class FighterController : MonoBehaviour
                 _movementController.MoveJoystick(movementInput);
             }
 
-            if (analogY > 0.5f) {
-                _movementController.Jump();
+            if (analogY*2 > 0.5f) {
+                _movementController.Jump(analogY*2, binaryMovement);
             }
 
         }
