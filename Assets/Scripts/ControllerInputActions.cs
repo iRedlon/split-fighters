@@ -140,8 +140,8 @@ public partial class @ControllerInputActions : IInputActionCollection2, IDisposa
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""4867d2b3-291e-4a76-b3f0-e4f4bef53901"",
+                    ""name"": ""Keyboard LeftStick"",
+                    ""id"": ""45826894-88db-4dd0-9338-483d9dd82d44"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -152,7 +152,7 @@ public partial class @ControllerInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""463178f0-f83e-4e0a-9fe2-20b546f60a8e"",
+                    ""id"": ""40abcdcb-845d-445d-9359-3ffd8ca1ff84"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -163,7 +163,7 @@ public partial class @ControllerInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""a700897b-65e0-4d2d-b726-9a4f86189bda"",
+                    ""id"": ""ac870cba-c5ec-43e2-9fe5-71250e3d9b9f"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -174,7 +174,7 @@ public partial class @ControllerInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""d887e8cd-0179-44c7-bee2-93e01f001ac8"",
+                    ""id"": ""4108815a-fada-459b-b1ee-d08207e6f4f9"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -185,7 +185,7 @@ public partial class @ControllerInputActions : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""8aa2dad5-ecd1-4478-acd3-bf4233abe2ef"",
+                    ""id"": ""8726c142-5eb5-4711-a908-558871b9c6f1"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",

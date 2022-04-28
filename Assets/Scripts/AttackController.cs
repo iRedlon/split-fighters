@@ -8,6 +8,7 @@ public class AttackController : MonoBehaviour
     public LayerMask layerMask;
     public GameObject hitBoxHigh;
     public GameObject hitBoxLow;
+    public GameObject shieldIcon;
 
     public float highAttackDuration = 0.5f;
     public float lowAttackDuration = 0.5f;
@@ -30,6 +31,8 @@ public class AttackController : MonoBehaviour
         hitBoxHigh.GetComponent<MeshRenderer>().enabled = false;
         hitBoxLow.GetComponent<MeshRenderer>().enabled = false;
 
+        shieldIcon.GetComponent<MeshRenderer>().enabled = false;
+
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -45,6 +48,19 @@ public class AttackController : MonoBehaviour
                 StartCoroutine(LowAttack());
             //}
         }
+    }
+
+    public void StartShield(float duration) {
+        StartCoroutine(Shield(duration));
+    }
+
+    IEnumerator Shield(float duration) {
+        shieldIcon.GetComponent<MeshRenderer>().enabled = true;
+
+        yield return new WaitForSeconds(duration);
+
+
+        shieldIcon.GetComponent<MeshRenderer>().enabled = false;
     }
 
     public void StartHighAttack() {

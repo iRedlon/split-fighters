@@ -36,6 +36,7 @@ public class FighterController : MonoBehaviour
     private InputController _inputController;
     private MovementController _movementController;
     private AttackController _attackController;
+    private SetModel _modelController;
 
     public bool binaryMovement = false;
     public bool overrideSplitControls;
@@ -67,10 +68,7 @@ public class FighterController : MonoBehaviour
             }
             health = maxHealth;
             uiManager.UpdateHealthSlider(gameObject, health, maxHealth);
-
         }
-
-
     }
 
     public float attackEndLagS = .5f;
@@ -169,6 +167,9 @@ public class FighterController : MonoBehaviour
                 blockTimer = 0;
                 state = CharacterState.Block;
                 _animator.SetTrigger("BlockAnim");
+
+                _attackController.StartShield(blockDurationS);
+
             } else if (state == CharacterState.Block) {
                 if (blockTimer >= blockDurationS) {
                     state = CharacterState.Idle;
@@ -281,6 +282,9 @@ public class FighterController : MonoBehaviour
                 blockTimer = 0;
                 state = CharacterState.Block;
                 _animator.SetTrigger("BlockAnim");
+
+
+                _attackController.StartShield(blockDurationS);
             } else if (state == CharacterState.Block) { // isBlocking
                 if (blockTimer >= blockDurationS) {
                     state = CharacterState.Idle;
@@ -344,6 +348,8 @@ public class FighterController : MonoBehaviour
 
     public void TakeDamage(float damage, int direction) {
         if (damageTimer > damageCooldown) {
+            _modelController.StartTakeDamageEffect(damageCooldown);
+
             damageTimer = 0f;
             audioSource.PlayOneShot(punchAudioClips[UnityEngine.Random.Range(0, punchAudioClips.Length)], 1.0F);
             health -= state == CharacterState.Block && damage == AttackController.HIGH_ATTACK_DAMAGE ? 1f : damage;
@@ -367,6 +373,8 @@ public class FighterController : MonoBehaviour
         _attackController = GetComponent<AttackController>();
         _inputController = GetComponent<InputController>();
         _animator = _animModel.GetComponent<Animator>();
+        _modelController = GetComponent<SetModel>();
+
         gameManager = FindObjectOfType<GameManager>();
         uiManager = FindObjectOfType<UIManager>();
         fighterManager = FindObjectOfType<FighterManager>();
@@ -420,75 +428,6 @@ public class FighterController : MonoBehaviour
             case ControlSystem.RightLeft:
                 LeftRightSplitInputs("Right", "Left");
                 break;
-        }
-        if (overrideSplitControls) {
-            /*
-            if (Input.GetAxis("Horizontal") > 0.5f) {
-                _movementController.MoveRight();
-            }
-            if (Input.GetAxis("Horizontal") < -0.5f) {
-                _movementController.MoveLeft();
-            }
-
-            if (state == CharacterState.Idle || state == CharacterState.Attack) {
-                if (Input.GetKeyDown(KeyCode.U)) {
-                    _attackController.StartHighAttack();
-                    _animator.SetTrigger("AttackAnim");
-                    inputRead = true;
-                    state = CharacterState.Attack;
-                }
-                if (Input.GetKeyDown(KeyCode.J)) {
-                    _attackController.StartLowAttack();
-                    inputRead = true;
-                    state = CharacterState.Attack;
-                }
-            }
-
-            if (state == CharacterState.Idle || state == CharacterState.Block) {
-                if (Input.GetKey(KeyCode.Space)) {
-                    Debug.Log("Block!");
-                    inputRead = true;
-                    state = CharacterState.Block;
-                }
-            }
-
-            if (!inputRead) {
-                _animator.SetTrigger("IdleAnim");
-                if (state != CharacterState.Idle && idleReturnTimer > idleReturnCooldown) {
-                    state = CharacterState.Idle;
-                }
-            } else {
-                if (state != CharacterState.Idle) {
-                    idleReturnTimer = 0;
-                }
-            }
-        } else {
-            switch(controlSystem) {
-            case ControlSystem.UpDown:
-                UpDownSplitInputs("Left", "Right");
-                break;
-            case ControlSystem.DownUp:
-                UpDownSplitInputs("Right", "Left");
-                break;
-            case ControlSystem.LeftRight:
-                LeftRightSplitInputs("Left", "Right");
-                break;
-            case ControlSystem.RightLeft:
-                LeftRightSplitInputs("Right", "Left");
-                break;
-        }
-
-            /*
-        Debug.Log("Right Bumper: " + Input.GetAxis("RightBumper"));
-        Debug.Log("Left Bumper: " + Input.GetAxis("LeftBumper"));
-
-        Debug.Log("Left Analog X: " + Input.GetAxis("LeftAnalogX"));
-        Debug.Log("Left Analog Y: " + Input.GetAxis("LeftAnalogY"));
-
-
-        Debug.Log("Right Analog X: " + Input.GetAxis("RightAnalogX"));
-        Debug.Log("Right Analog Y: " + Input.GetAxis("RightAnalogY"));
-            */
         }
     }
 
