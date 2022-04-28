@@ -85,6 +85,8 @@ MonoBehaviour:
   speed: 5
   gravity: 9.8
   jumpVel: 4
+  damping: 0.5
+  knockbackScale: 5
 --- !u!114 &5041081513570209438
 MonoBehaviour:
   m_ObjectHideFlags: 0

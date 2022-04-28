@@ -50,8 +50,14 @@ public class AttackController : MonoBehaviour
         }
     }
 
-    public void StartShield(float duration) {
-        StartCoroutine(Shield(duration));
+    public void StartShield() {
+        //StartCoroutine(Shield(duration));
+        shieldIcon.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    public void EndShield() {
+        shieldIcon.GetComponent<MeshRenderer>().enabled = false;
+
     }
 
     IEnumerator Shield(float duration) {

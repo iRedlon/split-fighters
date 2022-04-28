@@ -161,6 +161,18 @@ public class FighterController : MonoBehaviour
 
         blockTimer += Time.deltaTime;
         if (state == CharacterState.Idle || state == CharacterState.Block || state == CharacterState.Move) {
+            if (blockTrigger >= 0.5) {
+                inputRead = true;
+                state = CharacterState.Block;
+                _animator.SetTrigger("BlockAnim");
+                _attackController.StartShield();
+            } else {
+                _animator.ResetTrigger("BlockAnim");
+                _attackController.EndShield();
+            }
+
+            /*
+
             if (blockTrigger >= 0.5 && state != CharacterState.Block && blockTimer > blockDurationS + blockEndLagS) {
                 Debug.Log("Block!");
                 inputRead = true;
@@ -176,7 +188,7 @@ public class FighterController : MonoBehaviour
                     // TODO Maybe knock the character back?
                     Debug.Log("Not Blocking! Has end lag!");
                 }
-            }
+            }*/
         }
 
         // attackTimer += T
@@ -276,6 +288,18 @@ public class FighterController : MonoBehaviour
 
         blockTimer += Time.deltaTime;
         if (state == CharacterState.Idle || state == CharacterState.Block || state == CharacterState.Move) {
+            if (blockTrigger >= 0.5) {
+                inputRead = true;
+                state = CharacterState.Block;
+                _animator.SetTrigger("BlockAnim");
+                _attackController.StartShield();
+            } else {
+                _animator.ResetTrigger("BlockAnim");
+                _attackController.EndShield();
+            }
+
+            /*
+
             if (blockTrigger >= 0.5 && state != CharacterState.Block && blockTimer > blockDurationS + blockEndLagS) {
                 Debug.Log("Block!");
                 inputRead = true;
@@ -291,7 +315,7 @@ public class FighterController : MonoBehaviour
                     // TODO Maybe knock the character back?
                     Debug.Log("Not Blocking! Has end lag!");
                 }
-            }
+            }*/
         }
 
         if (!_attackController.attackInProgress && (state == CharacterState.Idle || state == CharacterState.Move)) {
