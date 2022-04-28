@@ -70,19 +70,8 @@ public class AttackController : MonoBehaviour
         while (timer < highAttackDuration) {
             Collider[] hitColliders = Physics.OverlapBox(hitBoxHigh.transform.position,
                         hitBoxHigh.transform.localScale / 2, Quaternion.identity, layerMask);
-
-            for (int i = 0; i < hitColliders.Length; i++) {
-                if (hitColliders[i].GetComponent<Dummy>() != null) {
-                    hitColliders[i].GetComponent<Dummy>().KnockBack(10f, new Vector3(1f, 0.1f, 0f));
-                    hitColliders[i].GetComponent<Dummy>().TakeDamage(1);
-                }
-                if (hitColliders[i].GetComponent<FighterController>() != null) {
-                    hitColliders[i].GetComponent<FighterController>().TakeDamage(HIGH_ATTACK_DAMAGE);
-                }
-            }
-
+            HandleAttackCollisions(hitColliders, HIGH_ATTACK_DAMAGE);
             timer += Time.deltaTime;
-
             yield return null;
         }
 
@@ -105,22 +94,26 @@ public class AttackController : MonoBehaviour
         while (timer < lowAttackDuration) {
             Collider[] hitColliders = Physics.OverlapBox(hitBoxLow.transform.position,
                         hitBoxLow.transform.localScale / 2, Quaternion.identity, layerMask);
-
-            for (int i = 0; i < hitColliders.Length; i++) {
-                if (hitColliders[i].GetComponent<Dummy>() != null) {
-                    hitColliders[i].GetComponent<Dummy>().KnockBack(10f, new Vector3(0.5f, 1f, 0f));
-                    hitColliders[i].GetComponent<Dummy>().TakeDamage(1f);
-                }
-                if (hitColliders[i].GetComponent<FighterController>() != null) {
-                    hitColliders[i].GetComponent<FighterController>().TakeDamage(LOW_ATTACK_DAMAGE);
-                }
-            }
+            HandleAttackCollisions(hitColliders, LOW_ATTACK_DAMAGE);
             timer += Time.deltaTime;
             yield return null;
         }
 
         hitBoxLow.GetComponent<MeshRenderer>().enabled = false;
         lowAttacked = false;
+    }
+
+    void HandleAttackCollisions(Collider[] hitColliders, float attackDamage) {
+        for (int i = 0; i < hitColliders.Length; i++) {
+            if (hitColliders[i].GetComponent<Dummy>() != null) {
+                hitColliders[i].GetComponent<Dummy>().Knockback(10f, new Vector3(0.5f, 1f, 0f));
+                hitColliders[i].GetComponent<Dummy>().TakeDamage(1f);
+            }
+            if (hitColliders[i].GetComponent<FighterController>() != null) {
+                hitColliders[i].GetComponent<FighterController>().TakeDamage(attackDamage, 
+                    transform.position.x > hitColliders[i].GetComponent<FighterController>().transform.position.x ? -1 : 1);
+            }
+        }
     }
 
     // Update is called once per frame

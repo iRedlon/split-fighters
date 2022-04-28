@@ -342,7 +342,7 @@ public class FighterController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage) {
+    public void TakeDamage(float damage, int direction) {
         if (damageTimer > damageCooldown) {
             damageTimer = 0f;
             audioSource.PlayOneShot(punchAudioClips[UnityEngine.Random.Range(0, punchAudioClips.Length)], 1.0F);
@@ -351,6 +351,8 @@ public class FighterController : MonoBehaviour
             // Debug.Log("Fighter Damage Taken: " + damage);
             hitStunTimer = 0f;
             state = CharacterState.HitStun;
+
+            _movementController.Knockback(direction);
 
             if (health <= 0)
             {
