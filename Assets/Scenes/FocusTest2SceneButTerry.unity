@@ -605,6 +605,10 @@ PrefabInstance:
       propertyPath: orthographic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3542148144371591098, guid: 7029a513aa24a834db6cccaa02e6a8a9, type: 3}
+      propertyPath: m_RenderingPath
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7029a513aa24a834db6cccaa02e6a8a9, type: 3}
 --- !u!114 &1591761964 stripped
@@ -631,6 +635,18 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615296591}
   m_Enabled: 1
+--- !u!114 &1615296593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615296591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbc08cb7e275164c9e4e02596a63712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1615296594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3542148144371591045, guid: 7029a513aa24a834db6cccaa02e6a8a9, type: 3}
@@ -1119,6 +1135,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 395497747247212692, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c89c809778faf84fa8368be9dd7c761, type: 2}
+    - target: {fileID: 812302185071972443, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c89c809778faf84fa8368be9dd7c761, type: 2}
+    - target: {fileID: 2356816311334292681, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c89c809778faf84fa8368be9dd7c761, type: 2}
+    - target: {fileID: 4045816566434879878, guid: c2840adef06922c469f10f192251eea5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c89c809778faf84fa8368be9dd7c761, type: 2}
     - target: {fileID: 5041081513570209431, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: m_Name
       value: Character
