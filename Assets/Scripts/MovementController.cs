@@ -39,20 +39,21 @@ public class MovementController : MonoBehaviour
         AssignOpponent();
     }
 
-    void ReadInputs() {
-        if (Input.GetAxis("Horizontal") > 0.5f) {
-            MoveRight();
-        }
+    //void ReadInputs() {
+        //if (Input.GetAxis("Horizontal") > 0.5f) {
+          //  MoveRight();
+        //}
 
-        if (Input.GetAxis("Horizontal") < -0.5f) {
-            MoveLeft();
-        }
+        //if (Input.GetAxis("Horizontal") < -0.5f) {
+          //  MoveLeft();
+        //}
 
-        if (Input.GetAxis("Vertical") > 0.5f) {
-            Jump();
-        }
+        //if (Input.GetAxis("Vertical") > 0.5f) {
+          //  Jump();
+        //}
 
-    }
+   // }
+    
 
     public void MoveJoystick(float strength) {
         movement = new Vector3(strength, 0, 0);
@@ -66,12 +67,18 @@ public class MovementController : MonoBehaviour
         movement = new Vector3(1f, 0, 0);
     }
 
-    public void Jump() {
+    public void Jump(float height, bool binary) {
         if (jumped) {
             return;
         }
         jumped = true;
-        gravityVec = new Vector3(0, jumpVel, 0);
+        if (binary){
+            gravityVec = new Vector3(0, jumpVel, 0);
+        }
+        else {
+            gravityVec = new Vector3(0, jumpVel*height, 0);
+        }
+        
     }
 
 
