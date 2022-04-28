@@ -36,7 +36,7 @@ public class Dummy : MonoBehaviour
         damageTimer = 0;
     }
 
-    public void KnockBack(float impact, Vector3 dir) {
+    public void Knockback(float impact, Vector3 dir) {
         if (!opponentToLeft) {
             dir.x *= -1;
         }

@@ -13,10 +13,14 @@ public class MovementController : MonoBehaviour
     public float speed = 1.0f;
     public float gravity = 9.8f;
     public float jumpVel = 3f;
+    public float damping = 0.9f;
+
+    public float knockbackScale = 10f;
 
 
     private Vector3 gravityVec = new Vector3();
     private Vector3 movement = new Vector3();
+    private Vector3 knockback = new Vector3();
     bool jumped = false;
 
 
@@ -53,6 +57,10 @@ public class MovementController : MonoBehaviour
 
     public void MoveRight() {
         movement = new Vector3(1f, 0, 0);
+    }
+
+    public void Knockback(float damage, int direction) {
+        knockback = new Vector3(direction * knockbackScale * damage, 0, 0);
     }
 
     public void Jump() {
@@ -103,7 +111,9 @@ public class MovementController : MonoBehaviour
             gravityVec = new Vector3(0, 0, 0);
         }
 
-        _controller.Move((movement * speed + gravityVec) * Time.deltaTime);
+        knockback = knockback * damping;
+        Vector3 movementVector = (movement * speed + gravityVec + knockback) * Time.deltaTime;
+        _controller.Move(movementVector);
         movement = new Vector3();
 
 
