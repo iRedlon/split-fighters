@@ -13,30 +13,23 @@ public class MovementController : MonoBehaviour
     public float speed = 1.0f;
     public float gravity = 9.8f;
     public float jumpVel = 3f;
+    public float damping = 0.9f;
+
+    public float knockbackScale = 10f;
 
 
     private Vector3 gravityVec = new Vector3();
     private Vector3 movement = new Vector3();
+    private Vector3 knockback = new Vector3();
     bool jumped = false;
 
-    void AssignOpponent() {
 
-        GameObject[] players;
-        players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject player in players) {
-            if (this.name != player.name) {
-                opponent = player;
-            }
-        }
-        // opponent = GameObject.Find("")
-    }
 
     // Start is called before the first frame update
     void Start()
     {
         _controller = GetComponent<CharacterController>();
 
-        AssignOpponent();
     }
 
     //void ReadInputs() {
@@ -67,6 +60,10 @@ public class MovementController : MonoBehaviour
         movement = new Vector3(1f, 0, 0);
     }
 
+    public void Knockback(float damage, int direction) {
+        knockback = new Vector3(direction * knockbackScale * damage, 0, 0);
+    }
+
     public void Jump(float height, bool binary) {
         if (jumped) {
             return;
@@ -81,6 +78,34 @@ public class MovementController : MonoBehaviour
         
     }
 
+    void FaceOpponent() {
+        if (opponent == null) {
+            Debug.Log("Finding Opponent");
+            //GameObject.Find("");
+
+            if (this.name == "Character") {
+                // P1
+                //opponent = GameObject.Find("Character");
+                opponent = GameObject.Find("CharacterFighter(Clone)");
+            } else {
+                // P2
+                opponent = GameObject.Find("Character");
+            }
+
+            return;
+        }
+
+
+        if (opponent != null) {
+            // Makes sure the player is facing the opponent at all times
+            if (transform.position.x <= opponent.transform.position.x) {
+                transform.localScale = new Vector3(1, 1, 1);
+            } else {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+        // pass
+    }
 
     void firstMovementControls() {
         // ReadInputs();
@@ -93,19 +118,10 @@ public class MovementController : MonoBehaviour
             gravityVec = new Vector3(0, 0, 0);
         }
 
-        _controller.Move((movement * speed + gravityVec) * Time.deltaTime);
+        knockback = knockback * damping;
+        Vector3 movementVector = (movement * speed + gravityVec + knockback) * Time.deltaTime;
+        _controller.Move(movementVector);
         movement = new Vector3();
-
-
-        if (opponent != null) {
-            // Makes sure the player is facing the opponent at all times
-            if (transform.position.x <= opponent.transform.position.x) {
-                transform.localScale = new Vector3(1, 1, 1);
-            } else {
-                transform.localScale = new Vector3(-1, 1, 1);
-            }
-        }
-        
 
 
     }
@@ -113,6 +129,10 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+        FaceOpponent();
+
         firstMovementControls();
     }
 }

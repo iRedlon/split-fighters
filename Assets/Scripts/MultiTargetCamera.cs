@@ -6,7 +6,6 @@ using UnityEngine;
 public class MultiTargetCamera : MonoBehaviour
 {
     public List<Transform> targets;
-    public GameObject empty;
 
     public Vector3 offset;
     public float smoothTime = .5f;
@@ -22,6 +21,15 @@ public class MultiTargetCamera : MonoBehaviour
     }
 
     void LateUpdate(){
+        if (targets[1].name == "Empty") {
+            Debug.Log("Finding second controller");
+            GameObject a = GameObject.Find("CharacterFighter(Clone)");
+            if (a != null) {
+                targets[1] = a.transform;
+
+            }
+        }
+
         if (targets.Count ==0){
             return;
         }
@@ -30,9 +38,9 @@ public class MultiTargetCamera : MonoBehaviour
     }
 
     void Zoom(){
-        float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance()/zoomLimiter);
-        //cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime);
-        cam.fieldOfView = newZoom;
+        float newZoom = Mathf.Lerp(minZoom, maxZoom, GetGreatestDistance()/zoomLimiter);
+        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime);
+        // cam.fieldOfView = newZoom;
         
     }
 
