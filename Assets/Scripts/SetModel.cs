@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SetModel : MonoBehaviour
 {
+    private UIManager uiManager;
     public FighterController fighterController;
 
     public Color hitColor;
@@ -41,6 +42,9 @@ public class SetModel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        uiManager = FindObjectOfType<UIManager>();
+        uiManager.SetPlayerColors(p1Color, p2Color, p3Color, p4Color);
+        
         allLimbs.Add(Head);
         allLimbs.Add(Torso);
         allLimbs.Add(BicepL);
