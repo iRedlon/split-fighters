@@ -19,24 +19,13 @@ public class MovementController : MonoBehaviour
     private Vector3 movement = new Vector3();
     bool jumped = false;
 
-    void AssignOpponent() {
 
-        GameObject[] players;
-        players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject player in players) {
-            if (this.name != player.name) {
-                opponent = player;
-            }
-        }
-        // opponent = GameObject.Find("")
-    }
 
     // Start is called before the first frame update
     void Start()
     {
         _controller = GetComponent<CharacterController>();
 
-        AssignOpponent();
     }
 
     void ReadInputs() {
@@ -74,6 +63,34 @@ public class MovementController : MonoBehaviour
         gravityVec = new Vector3(0, jumpVel, 0);
     }
 
+    void FaceOpponent() {
+        if (opponent == null) {
+            Debug.Log("Finding Opponent");
+            //GameObject.Find("");
+
+            if (this.name == "Character") {
+                // P1
+                //opponent = GameObject.Find("Character");
+                opponent = GameObject.Find("CharacterFighter(Clone)");
+            } else {
+                // P2
+                opponent = GameObject.Find("Character");
+            }
+
+            return;
+        }
+
+
+        if (opponent != null) {
+            // Makes sure the player is facing the opponent at all times
+            if (transform.position.x <= opponent.transform.position.x) {
+                transform.localScale = new Vector3(1, 1, 1);
+            } else {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+        // pass
+    }
 
     void firstMovementControls() {
         // ReadInputs();
@@ -90,22 +107,15 @@ public class MovementController : MonoBehaviour
         movement = new Vector3();
 
 
-        if (opponent != null) {
-            // Makes sure the player is facing the opponent at all times
-            if (transform.position.x <= opponent.transform.position.x) {
-                transform.localScale = new Vector3(1, 1, 1);
-            } else {
-                transform.localScale = new Vector3(-1, 1, 1);
-            }
-        }
-        
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
+        FaceOpponent();
+
         firstMovementControls();
     }
 }
