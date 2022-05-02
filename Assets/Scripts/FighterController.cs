@@ -108,6 +108,7 @@ public class FighterController : MonoBehaviour
                     inputRead = true;
                     state = CharacterState.Attack;
                     attackTimer = 0;
+                    _animator.SetTrigger("KickAnim");
                 } else if (attackButton == 1 && !(kickButton == 1)) { // High attack
                     _attackController.StartHighAttack();
                     _animator.SetTrigger("AttackAnim");
@@ -273,6 +274,7 @@ public class FighterController : MonoBehaviour
                     inputRead = true;
                     state = CharacterState.Attack;
                     attackTimer = 0;
+                    _animator.SetTrigger("KickAnim");
                 } else if (attackButton == 1 && !(kickButton == 1)) { // High attack
                     _attackController.StartHighAttack();
                     _animator.SetTrigger("AttackAnim");
