@@ -17,10 +17,13 @@ public class AttackController : MonoBehaviour
     private bool highAttacked = false;
     private bool lowAttacked = false;
 
+    private bool startedShield = false;
+
     public bool attackInProgress = false;
 
     public AudioSource audioSource;
     public AudioClip[] wooshAudioClips;
+    public AudioClip[] shieldAudioClips;
 
     public const float HIGH_ATTACK_DAMAGE = 3f; 
     public const float LOW_ATTACK_DAMAGE = 5f; 
@@ -53,11 +56,15 @@ public class AttackController : MonoBehaviour
     public void StartShield() {
         //StartCoroutine(Shield(duration));
         shieldIcon.GetComponent<MeshRenderer>().enabled = true;
+        if (!startedShield)
+            audioSource.PlayOneShot(shieldAudioClips[0], 1.0F);
+        Debug.Log("SHIELDS");
+        startedShield = true;
     }
 
     public void EndShield() {
         shieldIcon.GetComponent<MeshRenderer>().enabled = false;
-
+        startedShield = false;
     }
 
     IEnumerator Shield(float duration) {

@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     private float timeRemaining = 300f;
     private bool gameOver = false;
 
+    public AudioSource audioSource;
+
     void Awake()
     {
         uiManager = FindObjectOfType<UIManager>();
@@ -34,6 +36,8 @@ public class GameManager : MonoBehaviour
         timeRemaining = 300f;
         uiManager.ResetGame();
         Time.timeScale = 1f;
+        audioSource.Play();
+
 
         foreach (FighterController fc in GetComponents<FighterController>())
         {
