@@ -16,6 +16,42 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image team2LeftControllerIcon, team2RightControllerIcon;
 
     private bool gameOver;
+    
+    public GameObject mainMenuCanvas, creditsCanvas, pregameCanvas, gameCanvas;
+    
+    // TODO: Trigger on 'Start' button on main menu
+    public void StartGame()
+    {
+        pregameCanvas.SetActive(true);
+        mainMenuCanvas.SetActive(false);
+    }
+
+    // TODO: Trigger on 'Credits' button on main menu
+    public void Credits()
+    {
+        creditsCanvas.SetActive(true);
+        mainMenuCanvas.SetActive(false);
+    }
+
+    // TODO: Trigger on 'Quit' button on main menu
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    // TODO: Trigger on 'Back' button on credits menu
+    public void Back()
+    {
+        mainMenuCanvas.SetActive(true);
+        creditsCanvas.SetActive(false);
+    }
+
+    // TODO: Trigger on P2 controller connection
+    public void Ready()
+    {
+        gameCanvas.SetActive(true);
+        pregameCanvas.SetActive(false);
+    }
 
     public void SetPlayerColors(Color p1Color, Color p2Color, Color p3Color, Color p4Color)
     {
