@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &493085603
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,8 +238,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,8 +525,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2774f6bf9e3d7d4a8c44568b69195f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   timerText: {fileID: 1928578660}
   player1Slider: {fileID: 151356222}
   player2Slider: {fileID: 1591761964}
@@ -544,8 +544,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32cc2f9bd27805f49b6be6e439ac90ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   audioSource: {fileID: 0}
 --- !u!4 &976081883
 Transform:
@@ -761,8 +761,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &1305796501 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8002924132092507556, guid: 675d687131deaa6458020ce5f9453cf0, type: 3}
@@ -772,8 +772,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &1352565114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -799,11 +799,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3542148144371591044, guid: 7029a513aa24a834db6cccaa02e6a8a9, type: 3}
       propertyPath: targets.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 1470822516}
     - target: {fileID: 3542148144371591044, guid: 7029a513aa24a834db6cccaa02e6a8a9, type: 3}
       propertyPath: targets.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 850327458}
     - target: {fileID: 3542148144371591045, guid: 7029a513aa24a834db6cccaa02e6a8a9, type: 3}
       propertyPath: m_RootOrder
@@ -872,8 +872,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac25bafc9934e784fa61d336c76e39d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!4 &1470822516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5041081513570209437, guid: c2840adef06922c469f10f192251eea5, type: 3}
@@ -1314,8 +1314,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1 &1615296591 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3542148144371591096, guid: 7029a513aa24a834db6cccaa02e6a8a9, type: 3}
@@ -1339,8 +1339,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdbc08cb7e275164c9e4e02596a63712, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!4 &1615296594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3542148144371591045, guid: 7029a513aa24a834db6cccaa02e6a8a9, type: 3}
@@ -1356,8 +1356,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   sharedProfile: {fileID: 11400000, guid: d177956613caa7d4380df71ee8dd6416, type: 2}
   isGlobal: 1
   blendDistance: 0
@@ -1373,8 +1373,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   volumeTrigger: {fileID: 1615296594}
   volumeLayer:
     serializedVersion: 2
@@ -1433,8 +1433,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c520d478f3d2445429bd7ac9c92b03a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   postProcessLayer: {fileID: 1615296596}
   lightMeter: 0
   histogram: 0
@@ -1499,8 +1499,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_NotificationBehavior: 0
   m_MaxPlayerCount: 2
   m_AllowJoining: 1
@@ -1514,12 +1514,12 @@ MonoBehaviour:
   m_JoinAction:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name:
       m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 
-      m_Processors: 
-      m_Interactions: 
+      m_ExpectedControlType:
+      m_Id:
+      m_Processors:
+      m_Interactions:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
@@ -1557,8 +1557,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2989c4ddf701aa3459e00a1006d28a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   p1FC: {fileID: 1470822510}
   p2FC: {fileID: 0}
   rotationTrigger: 0
@@ -1670,8 +1670,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &1897834332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1681,15 +1681,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5041081513570209425, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: audioSource
-      value: 
+      value:
       objectReference: {fileID: 1499626961}
     - target: {fileID: 5041081513570209425, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: jumpingAudioSource
-      value: 
+      value:
       objectReference: {fileID: 1499626962}
     - target: {fileID: 5041081513570209425, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: walkingAudioSource
-      value: 
+      value:
       objectReference: {fileID: 1499626961}
     - target: {fileID: 5041081513570209425, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: movementAudioClips.Array.size
@@ -1697,11 +1697,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5041081513570209425, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: movementAudioClips.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: f9e3005164796e044b6216103b3106da, type: 3}
     - target: {fileID: 5041081513570209425, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: movementAudioClips.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: 9c94242d74c6306459cc1193e31a7061, type: 3}
     - target: {fileID: 5041081513570209431, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: m_Name
@@ -1753,7 +1753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5041081513570209438, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: audioSource
-      value: 
+      value:
       objectReference: {fileID: 1499626963}
     - target: {fileID: 5041081513570209438, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: shieldSounds.Array.size
@@ -1761,7 +1761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5041081513570209438, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: shieldSounds.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: 83967bbd34d740749b1c23f0d3f41d72, type: 3}
     - target: {fileID: 5041081513570209438, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: shieldAudioClips.Array.size
@@ -1769,23 +1769,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5041081513570209438, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: shieldAudioClips.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: 83967bbd34d740749b1c23f0d3f41d72, type: 3}
     - target: {fileID: 5041081513570209438, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: shieldAudioClips.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: 83967bbd34d740749b1c23f0d3f41d72, type: 3}
     - target: {fileID: 5041081513570209438, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: shieldAudioClips.Array.data[2]
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: 83967bbd34d740749b1c23f0d3f41d72, type: 3}
     - target: {fileID: 5041081513570209438, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: shieldAudioClips.Array.data[3]
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: 83967bbd34d740749b1c23f0d3f41d72, type: 3}
     - target: {fileID: 5041081513570209439, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: audioSource
-      value: 
+      value:
       objectReference: {fileID: 1499626963}
     - target: {fileID: 5041081513570209439, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: blockAudioClips.Array.size
@@ -1793,19 +1793,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5041081513570209439, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: blockAudioClips.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: e0fabafb4041bb646934eacfa6e16002, type: 3}
     - target: {fileID: 5041081513570209439, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: blockAudioClips.Array.data[1]
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: cf2cc78ae1897b34b92f73060c6330d0, type: 3}
     - target: {fileID: 5041081513570209439, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: blockAudioClips.Array.data[2]
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: e8aeeccf564a37e4da5def8547f7e2e8, type: 3}
     - target: {fileID: 5041081513570209439, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: blockAudioClips.Array.data[3]
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: 315f6bc28e2bdf940a491d326547e9c0, type: 3}
     - target: {fileID: 5041081513570209439, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: movementAudioClips.Array.size
@@ -1813,7 +1813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5041081513570209439, guid: c2840adef06922c469f10f192251eea5, type: 3}
       propertyPath: movementAudioClips.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 8300000, guid: f9e3005164796e044b6216103b3106da, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2840adef06922c469f10f192251eea5, type: 3}
@@ -1826,8 +1826,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &2037228900
 PrefabInstance:
   m_ObjectHideFlags: 0
