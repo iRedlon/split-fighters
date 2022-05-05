@@ -5185,6 +5185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cc2f9bd27805f49b6be6e439ac90ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player1Sticker: {fileID: 0}
+  Player2Sticker: {fileID: 0}
   gameStarted: 0
   gameOver: 0
   blueRounds: 0

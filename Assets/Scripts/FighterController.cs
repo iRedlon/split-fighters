@@ -24,6 +24,7 @@ public class FighterController : MonoBehaviour
     private GameManager gameManager;
     private UIManager uiManager;
     private FighterManager fighterManager;
+    public ParticleSystem sparkParticle;
 
 
     public Vector3 p1StartingPosition = new Vector3(-3 ,0 ,0);
@@ -32,6 +33,7 @@ public class FighterController : MonoBehaviour
     public ControlSystem controlSystem = ControlSystem.UpDown;
 
     public CharacterState state = CharacterState.Idle;
+
 
     private InputController _inputController;
     private MovementController _movementController;
@@ -383,6 +385,10 @@ public class FighterController : MonoBehaviour
         }
     }
 
+    void playerHitParticles() {
+        sparkParticle.Play();
+    }
+
     public void TakeDamage(float damage, int direction) {
         if (damageTimer > damageCooldown && gameManager.gameStarted) {
             _modelController.StartTakeDamageEffect(damageCooldown);
@@ -397,7 +403,7 @@ public class FighterController : MonoBehaviour
             } else {
                 audioSource.PlayOneShot(punchAudioClips[UnityEngine.Random.Range(0, punchAudioClips.Length)], 1.0F);
             }
-            isHit = true;
+            playerHitParticles();
 
             state = CharacterState.HitStun;
 

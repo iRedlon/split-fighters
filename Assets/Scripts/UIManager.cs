@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
     {
         creditsCanvas.SetActive(true);
         mainMenuCanvas.SetActive(false);
+        //gameOverCanvas.SetActive(false);
     }
 
     // TODO: Trigger on 'Quit' button on main menu

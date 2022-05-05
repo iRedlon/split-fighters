@@ -94,7 +94,7 @@ public class AttackController : MonoBehaviour
 
         float timer = 0.0f;
 
-        hitBoxHigh.GetComponent<MeshRenderer>().enabled = true;
+        //hitBoxHigh.GetComponent<MeshRenderer>().enabled = true;
 
         while (timer < highAttackDuration) {
             Collider[] hitColliders = Physics.OverlapBox(hitBoxHigh.transform.position,
@@ -105,7 +105,7 @@ public class AttackController : MonoBehaviour
         }
 
 
-        hitBoxHigh.GetComponent<MeshRenderer>().enabled = false;
+        //hitBoxHigh.GetComponent<MeshRenderer>().enabled = false;
         highAttacked = false;
     }
 
@@ -118,7 +118,7 @@ public class AttackController : MonoBehaviour
 
         float timer = 0.0f;
 
-        hitBoxLow.GetComponent<MeshRenderer>().enabled = true;
+        //hitBoxLow.GetComponent<MeshRenderer>().enabled = true;
 
         while (timer < lowAttackDuration) {
             Collider[] hitColliders = Physics.OverlapBox(hitBoxLow.transform.position,
@@ -128,7 +128,7 @@ public class AttackController : MonoBehaviour
             yield return null;
         }
 
-        hitBoxLow.GetComponent<MeshRenderer>().enabled = false;
+        //hitBoxLow.GetComponent<MeshRenderer>().enabled = false;
         lowAttacked = false;
     }
     

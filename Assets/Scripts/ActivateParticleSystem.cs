@@ -9,18 +9,21 @@ public class ActivateParticleSystem : MonoBehaviour
     public bool activate = false;
     private FighterController controller;
 
+    public GameObject parent;
 
     // Start is called before the first frame updat
     void Start(){
+        Debug.Log("HEYYYY");
         sparkParticle = GetComponent<ParticleSystem>();
-        controller = GetComponentInParent<FighterController>();
+        controller = parent.GetComponent<FighterController>();
+        //controller = GetComponentInParent<FighterController>();
     }
     void Update()
     {
+        Debug.Log(controller.isHit);
         
         if (controller.isHit){
-            sparkParticle.Play();
-            
+            //sparkParticle.Play();
         }
     }
     

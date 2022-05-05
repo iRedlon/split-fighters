@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/FocusTestScene3.unity
-    guid: 3f58d3820f44d214c9e8b73a79c13018
+    path: Assets/Scenes/VisualChangesScene.unity
+    guid: 7575d30588d4ee2479f15a735b69748e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 824e84c81a3267a4e88bd2f1e824cca4, type: 2}
