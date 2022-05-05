@@ -18,6 +18,9 @@ public class MovementController : MonoBehaviour
     public float damping = 0.9f;
 
     public float knockbackScale = 10f;
+    public AudioSource walkingAudioSource;
+    public AudioSource jumpingAudioSource;
+    public AudioClip[] movementAudioClips;
 
 
     private Vector3 gravityVec = new Vector3();
@@ -80,7 +83,8 @@ public class MovementController : MonoBehaviour
         else {
             gravityVec = new Vector3(0, jumpVel*height, 0);
         }
-        
+        jumpingAudioSource.clip = movementAudioClips[1];
+        jumpingAudioSource.Play();
     }
 
     void FaceOpponent() {
@@ -130,6 +134,13 @@ public class MovementController : MonoBehaviour
         } else {
             jumped = false;
             gravityVec = new Vector3(0, 0, 0);
+        }
+
+        if (!walkingAudioSource.isPlaying && !jumped && movement.x != 0.0) {
+            walkingAudioSource.clip = movementAudioClips[0];
+            walkingAudioSource.Play();
+        } else if (jumped || movement.x == 0.0) {
+            walkingAudioSource.Pause();
         }
 
         knockback = knockback * damping;

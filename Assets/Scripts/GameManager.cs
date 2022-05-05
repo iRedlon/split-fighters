@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public int blueRounds, redRounds;
 
+    public AudioSource audioSource;
+
     void Awake()
     {
         uiManager = FindObjectOfType<UIManager>();
@@ -48,6 +50,8 @@ public class GameManager : MonoBehaviour
         timeRemaining = 300f;
         uiManager.ResetGame();
         Time.timeScale = 1f;
+        audioSource.Play();
+
 
         foreach (FighterController fc in FindObjectsOfType<FighterController>())
         {
