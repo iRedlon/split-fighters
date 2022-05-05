@@ -6,6 +6,12 @@ public enum FighterName { RedFighter, BlueFighter, Neither };
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject Player1Sticker;
+
+
+    public GameObject Player2Sticker;
+
+
     private UIManager uiManager;
     
     private float timeRemaining = 300f;
@@ -65,6 +71,8 @@ public class GameManager : MonoBehaviour
         {
             redRounds++;
 
+            Player1Sticker.SetActive(true);
+
             if (redRounds == 2)
             {
                 EndGame(FighterName.RedFighter);
@@ -78,6 +86,8 @@ public class GameManager : MonoBehaviour
         if (winner == FighterName.BlueFighter)
         {
             blueRounds++;
+
+            Player2Sticker.SetActive(true);
 
             if (blueRounds == 2)
             {
@@ -105,6 +115,9 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        Player1Sticker.SetActive(false);
+        Player2Sticker.SetActive(false);
+
         redRounds = 0;
         blueRounds = 0;
         gameStarted = true;
