@@ -528,12 +528,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1928578660}
+  winnerText: {fileID: 0}
   player1Slider: {fileID: 151356222}
   player2Slider: {fileID: 1591761964}
   team1LeftControllerIcon: {fileID: 1881177254}
   team1RightControllerIcon: {fileID: 653290824}
   team2LeftControllerIcon: {fileID: 1305796501}
   team2RightControllerIcon: {fileID: 1305522969}
+  ready: 0
+  mainMenuCanvas: {fileID: 0}
+  creditsCanvas: {fileID: 0}
+  pregameCanvas: {fileID: 0}
+  readyCanvas: {fileID: 0}
+  gameCanvas: {fileID: 0}
+  gameOverCanvas: {fileID: 0}
 --- !u!114 &976081882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,6 +554,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cc2f9bd27805f49b6be6e439ac90ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStarted: 0
+  gameOver: 0
+  blueRounds: 0
+  redRounds: 0
   audioSource: {fileID: 0}
 --- !u!4 &976081883
 Transform:
@@ -1505,6 +1517,10 @@ PrefabInstance:
     - target: {fileID: 3484067910393285480, guid: ca273c7bb6e238849bcce4d1f22e6473, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484067910618074953, guid: ca273c7bb6e238849bcce4d1f22e6473, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3484067910618074955, guid: ca273c7bb6e238849bcce4d1f22e6473, type: 3}
       propertyPath: m_Layer
