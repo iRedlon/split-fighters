@@ -9,6 +9,7 @@ public enum PlayerNum { Player1, Player2 }
 
 public class UIManager : MonoBehaviour
 {
+    private GameManager gameManager;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private Slider player1Slider, player2Slider;
     
@@ -16,11 +17,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image team2LeftControllerIcon, team2RightControllerIcon;
 
     private bool gameOver;
+    public bool ready;
     
-    public GameObject mainMenuCanvas, creditsCanvas, pregameCanvas, gameCanvas;
+    private float readyTimer = 3f;
     
+    public GameObject mainMenuCanvas, creditsCanvas, pregameCanvas, readyCanvas, gameCanvas;
+
     // TODO: Trigger on 'Start' button on main menu
-    public void StartGame()
+    public void MainMenuStart()
     {
         pregameCanvas.SetActive(true);
         mainMenuCanvas.SetActive(false);
@@ -40,7 +44,7 @@ public class UIManager : MonoBehaviour
     }
 
     // TODO: Trigger on 'Back' button on credits menu
-    public void Back()
+    public void BackToMainMenu()
     {
         mainMenuCanvas.SetActive(true);
         creditsCanvas.SetActive(false);
@@ -49,8 +53,16 @@ public class UIManager : MonoBehaviour
     // TODO: Trigger on P2 controller connection
     public void Ready()
     {
-        gameCanvas.SetActive(true);
+        readyCanvas.SetActive(true);
         pregameCanvas.SetActive(false);
+
+        ready = true;
+    }
+
+    public void StartGame()
+    {
+        gameCanvas.SetActive(true);
+        readyCanvas.SetActive(false);
     }
 
     public void SetPlayerColors(Color p1Color, Color p2Color, Color p3Color, Color p4Color)
@@ -103,5 +115,28 @@ public class UIManager : MonoBehaviour
     {
         timerText.text = "Game Over!";
         gameOver = true;
+    }
+
+    public void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
+    public void Update()
+    {
+        if (ready)
+        {
+            if (readyTimer > 0)
+            {
+                readyTimer -= Time.deltaTime;
+            }
+            else
+            {
+                gameManager.StartGame();
+                StartGame();
+
+                ready = false;
+            }
+        }
     }
 }

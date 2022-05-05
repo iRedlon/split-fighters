@@ -5,7 +5,9 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
 
-
+    private GameManager gameManager;
+    private UIManager uiManager;
+    
     private CharacterController _controller;
 
     public GameObject opponent;
@@ -28,6 +30,9 @@ public class MovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+        uiManager = FindObjectOfType<UIManager>();
+        
         _controller = GetComponent<CharacterController>();
 
     }
@@ -95,8 +100,17 @@ public class MovementController : MonoBehaviour
             return;
         }
 
+        if (this.name == "Character" && opponent != null)
+        {
+            if (!gameManager.gameStarted && !uiManager.ready)
+            {
+                uiManager.Ready();
+            }
+        }
+
 
         if (opponent != null) {
+            
             // Makes sure the player is facing the opponent at all times
             if (transform.position.x <= opponent.transform.position.x) {
                 transform.localScale = new Vector3(1, 1, 1);

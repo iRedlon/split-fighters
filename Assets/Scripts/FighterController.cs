@@ -376,7 +376,7 @@ public class FighterController : MonoBehaviour
     }
 
     public void TakeDamage(float damage, int direction) {
-        if (damageTimer > damageCooldown) {
+        if (damageTimer > damageCooldown && gameManager.gameStarted) {
             _modelController.StartTakeDamageEffect(damageCooldown);
 
             damageTimer = 0f;
