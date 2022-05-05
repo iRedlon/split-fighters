@@ -38,6 +38,7 @@ public class FighterController : MonoBehaviour
     private AttackController _attackController;
     private SetModel _modelController;
 
+    public bool isHit = false;
     public bool binaryMovement = false;
     public bool overrideSplitControls;
     private float damageTimer;
@@ -396,6 +397,7 @@ public class FighterController : MonoBehaviour
             } else {
                 audioSource.PlayOneShot(punchAudioClips[UnityEngine.Random.Range(0, punchAudioClips.Length)], 1.0F);
             }
+            isHit = true;
 
             state = CharacterState.HitStun;
 
@@ -444,6 +446,7 @@ public class FighterController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        
         // ResetGame();
         damageTimer += Time.deltaTime;
 
@@ -470,6 +473,7 @@ public class FighterController : MonoBehaviour
                 LeftRightSplitInputs("Right", "Left");
                 break;
         }
+        isHit = false;
     }
 
 }
