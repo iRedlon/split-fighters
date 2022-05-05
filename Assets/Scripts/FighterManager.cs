@@ -8,6 +8,7 @@ public enum RotationTrigger { Timer, OnHit }
 
 public class FighterManager : MonoBehaviour
 {
+    GameManager gameManager;
     [SerializeField] public FighterController p1FC, p2FC;
     
     public RotationTrigger rotationTrigger = RotationTrigger.Timer;
@@ -21,6 +22,7 @@ public class FighterManager : MonoBehaviour
 
     void Awake()
     {
+        gameManager = FindObjectOfType<GameManager>();
         currentTriggerTimer = triggerTimer;
     }
 
@@ -36,9 +38,9 @@ public class FighterManager : MonoBehaviour
     }
     void Update()
     {
-        if (rotationTrigger == RotationTrigger.Timer)
+        if (rotationTrigger == RotationTrigger.Timer && gameManager.gameStarted)
         {
-            // UpdateTriggerTimer();
+            UpdateTriggerTimer();
         }
     }
 
