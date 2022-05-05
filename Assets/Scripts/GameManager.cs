@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private float timeRemaining = 300f;
 
     public bool gameStarted = false;
-    private bool gameOver = false;
+    public bool gameOver = false;
 
     public int blueRounds, redRounds;
 
@@ -93,9 +93,17 @@ public class GameManager : MonoBehaviour
             fc.ResetPosition();
         }
         
-        gameOver = true;
         uiManager.EndGame(winner);
+        gameOver = true;
         gameStarted = false;
-        Time.timeScale = 0;
+        // Time.timeScale = 0;
+    }
+
+    public void RestartGame()
+    {
+        redRounds = 0;
+        blueRounds = 0;
+        gameStarted = true;
+        ResetGame();
     }
 }

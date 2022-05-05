@@ -10,7 +10,7 @@ public enum PlayerNum { Player1, Player2 }
 public class UIManager : MonoBehaviour
 {
     private GameManager gameManager;
-    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI timerText, winnerText;
     [SerializeField] private Slider player1Slider, player2Slider;
     
     [SerializeField] private Image team1LeftControllerIcon, team1RightControllerIcon;
@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     
     private float readyTimer = 3f;
     
-    public GameObject mainMenuCanvas, creditsCanvas, pregameCanvas, readyCanvas, gameCanvas;
+    public GameObject mainMenuCanvas, creditsCanvas, pregameCanvas, readyCanvas, gameCanvas, gameOverCanvas;
 
     // TODO: Trigger on 'Start' button on main menu
     public void MainMenuStart()
@@ -54,6 +54,7 @@ public class UIManager : MonoBehaviour
     public void Ready()
     {
         readyCanvas.SetActive(true);
+        mainMenuCanvas.SetActive(false);
         pregameCanvas.SetActive(false);
 
         ready = true;
@@ -111,24 +112,30 @@ public class UIManager : MonoBehaviour
     public void ResetGame()
     {
         gameOver = false;
+        
+        gameCanvas.SetActive(true);
+        gameOverCanvas.SetActive(false);
     }
 
     public void EndGame(FighterName winner)
     {
         if (winner == FighterName.RedFighter)
         {
-            timerText.text = "Red wins!";
+            winnerText.text = "Red wins!";
         }
         else if (winner == FighterName.BlueFighter)
         {
-            timerText.text = "Blue wins!";
+            winnerText.text = "Blue wins!";
         } 
         else if (winner == FighterName.Neither)
         {
-            timerText.text = "Draw!";
+            winnerText.text = "Draw!";
         }
         
         gameOver = true;
+        
+        gameCanvas.SetActive(false);
+        gameOverCanvas.SetActive(true);
     }
 
     public void Start()

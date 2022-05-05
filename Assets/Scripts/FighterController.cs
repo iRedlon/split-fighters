@@ -397,7 +397,7 @@ public class FighterController : MonoBehaviour
 
             if (health <= 0)
             {
-                gameManager.EndRound(name == "Character" ? FighterName.RedFighter : FighterName.BlueFighter);
+                gameManager.EndRound(name == "Character" ? FighterName.BlueFighter : FighterName.RedFighter);
             }
         }
     }

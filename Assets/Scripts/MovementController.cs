@@ -102,7 +102,7 @@ public class MovementController : MonoBehaviour
 
         if (this.name == "Character" && opponent != null)
         {
-            if (!gameManager.gameStarted && !uiManager.ready)
+            if (!gameManager.gameStarted && !gameManager.gameOver && !uiManager.ready)
             {
                 uiManager.Ready();
             }
