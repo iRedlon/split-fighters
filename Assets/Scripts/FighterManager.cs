@@ -38,7 +38,7 @@ public class FighterManager : MonoBehaviour
     {
         if (rotationTrigger == RotationTrigger.Timer)
         {
-            UpdateTriggerTimer();
+            // UpdateTriggerTimer();
         }
     }
 

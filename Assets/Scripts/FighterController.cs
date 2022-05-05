@@ -56,19 +56,26 @@ public class FighterController : MonoBehaviour
     public float blockEndLagS = .25f;
     public float blockTimer = 99;
 
-    public void ResetGame() {
+    public void ResetPosition()
+    {
+        if (this.name == "Character") {
+            transform.position = p1StartingPosition;
+        } else {
+            transform.position = p2StartingPosition;
+        }
+    }
 
+    public void ResetGame() {
         float upButton = _inputController.upButton;
 
-        if (upButton >= 0.5f) {
-            if (this.name == "Character") {
-                transform.position = p1StartingPosition;
-            } else {
-                transform.position = p2StartingPosition;
-            }
-            health = maxHealth;
-            uiManager.UpdateHealthSlider(gameObject, health, maxHealth);
-        }
+        // if (upButton >= 0.5f) {
+        //     
+        // }
+        
+        ResetPosition();
+
+        health = maxHealth;
+        uiManager.UpdateHealthSlider(gameObject, health, maxHealth);
     }
 
     public float attackEndLagS = .5f;
@@ -390,7 +397,7 @@ public class FighterController : MonoBehaviour
 
             if (health <= 0)
             {
-                gameManager.EndGame();
+                gameManager.EndRound(name == "Character" ? FighterName.RedFighter : FighterName.BlueFighter);
             }
         }
     }
@@ -431,7 +438,7 @@ public class FighterController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        ResetGame();
+        // ResetGame();
         damageTimer += Time.deltaTime;
 
         if (state == CharacterState.HitStun && hitStunTimer > hitStunCooldown) {

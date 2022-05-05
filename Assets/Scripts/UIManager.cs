@@ -63,6 +63,8 @@ public class UIManager : MonoBehaviour
     {
         gameCanvas.SetActive(true);
         readyCanvas.SetActive(false);
+        pregameCanvas.SetActive(false);
+        mainMenuCanvas.SetActive(false);
     }
 
     public void SetPlayerColors(Color p1Color, Color p2Color, Color p3Color, Color p4Color)
@@ -111,9 +113,21 @@ public class UIManager : MonoBehaviour
         gameOver = false;
     }
 
-    public void EndGame()
+    public void EndGame(FighterName winner)
     {
-        timerText.text = "Game Over!";
+        if (winner == FighterName.RedFighter)
+        {
+            timerText.text = "Red wins!";
+        }
+        else if (winner == FighterName.BlueFighter)
+        {
+            timerText.text = "Blue wins!";
+        } 
+        else if (winner == FighterName.Neither)
+        {
+            timerText.text = "Draw!";
+        }
+        
         gameOver = true;
     }
 
