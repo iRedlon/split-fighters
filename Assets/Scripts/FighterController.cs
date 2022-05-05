@@ -48,7 +48,7 @@ public class FighterController : MonoBehaviour
     public float idleReturnCooldown = 0.15f;
     public AudioSource audioSource;
     public AudioClip[] punchAudioClips;
-
+    public AudioClip[] blockAudioClips;
     public float maxHealth = 100f;
     public float health;
 
@@ -380,10 +380,16 @@ public class FighterController : MonoBehaviour
             _modelController.StartTakeDamageEffect(damageCooldown);
 
             damageTimer = 0f;
-            audioSource.PlayOneShot(punchAudioClips[UnityEngine.Random.Range(0, punchAudioClips.Length)], 1.0F);
             health -= state == CharacterState.Block && damage == AttackController.HIGH_ATTACK_DAMAGE ? 1f : damage;
             uiManager.UpdateHealthSlider(gameObject, health, maxHealth);
             hitStunTimer = 0f;
+
+            if (state == CharacterState.Block) {
+                audioSource.PlayOneShot(blockAudioClips[UnityEngine.Random.Range(0, blockAudioClips.Length)], 1.0F);
+            } else {
+                audioSource.PlayOneShot(punchAudioClips[UnityEngine.Random.Range(0, punchAudioClips.Length)], 1.0F);
+            }
+
             state = CharacterState.HitStun;
 
             _movementController.Knockback(damage, direction);
